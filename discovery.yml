@@ -1,0 +1,1097 @@
+version: 19
+extractors:
+- name: tap-matatika-sit
+  namespace: tap_matatika_sit
+  hidden: false
+  label: Matatika SIT
+  description: Test extractor based on tap-spreadsheets-anywhere used during Matatika
+    SIT runs
+  image_url: /assets/images/datasource/tap-matatika-sit.svg
+  docs: https://meltano.com/plugins/extractors/spreadsheets-anywhere.html
+  repo: https://github.com/ets/tap-spreadsheets-anywhere
+  pip_url: git+https://github.com/ets/tap-spreadsheets-anywhere.git
+  executable: tap-spreadsheets-anywhere
+  capabilities:
+  - state
+  - discover
+  - catalog
+  settings:
+  - name: tables
+    kind: array
+    value: '[{"path":"https://raw.githubusercontent.com/Matatika/matatika-examples/master/example_data","name":"gitflixusers","pattern":"GitFlixUsers.csv","start_date":"2021-01-01T00:00:00Z","key_properties":["id"],"format":"csv"}]'
+    label: Tables
+    description: An array holding json objects that each describe a set of targeted
+      source files. See docs for details.
+    protected: false
+- name: tap-googleads
+  namespace: tap_googleads
+  hidden: false
+  label: Google Ads
+  description: "App and website ads platform hosted by Google.\n\n## Prerequisites\n\
+    \n[Google Ads Prerequisites](https://www.matatika.com/docs/data-sources/tap-googleads/prerequisites)\n\
+    \n## Data source settings\n\n### Customer Id\n\nCustomer Id is the account id\
+    \ of your Google Ads account with the ads campaigns, and therefore data, that\
+    \ will get synced.\n\nYour Customer Id is usually in the format '111-111-1111'\
+    \ but to make requests to the api we have to remove the dashes.\n\n### Start Date\n\
+    \nProviding a start date allows you to set how much historical data you wish to\
+    \ import into you workspace. \n\nIf you do not provide a start date the tap will\
+    \ set a date of one year ago.\n\nThis date has to be in the ISO-8601 date format,\
+    \ see the example below.\n\nFormat: `YYYY-MM-DDTHH:MM:SSZ`\n\nExample: `2020-10-01T13:12:11Z`\n\
+    \n### End Date\n\nProviding a end date allows you to set how much historical data\
+    \ you wish to import into you workspace. \n\nIf you do not provide a end date\
+    \ the tap will sync all data up to the current date.\n\nThis date has to be in\
+    \ the ISO-8601 date format, see the example below.\n\nFormat: `YYYY-MM-DDTHH:MM:SSZ`\n\
+    \nExample: `2020-10-01T13:12:11Z`\n\n## Learn more\n\nLearn more about the Google\
+    \ Ads data source\n\n[Google Ads Extractor Documentation](https://github.com/Matatika/tap-googleads/blob/main/README.md)"
+  image_url: /assets/images/datasource/tap-googleads.svg
+  docs: https://www.matatika.com/docs/data-sources/tap-googleads/
+  repo: https://github.com/Matatika/tap-googleads
+  pip_url: git+https://github.com/Matatika/tap-googleads@v0.3.0
+  capabilities:
+  - state
+  - discover
+  - catalog
+  settings:
+  - name: oauth_credentials.authorization_url
+    kind: hidden
+    value: https://oauth2.googleapis.com/token
+    label: OAuth identity provider authorization endpoint used create and refresh
+      tokens
+    protected: false
+  - name: oauth_credentials.scope
+    kind: hidden
+    value: https://www.googleapis.com/auth/adwords
+    label: OAuth scopes we need to request access to
+    protected: false
+  - name: oauth_credentials.access_token
+    kind: hidden
+    label: Access Token
+    protected: false
+  - name: oauth_credentials.refresh_token
+    kind: hidden
+    label: OAuth Refresh Token
+    protected: false
+  - name: oauth_credentials.refresh_proxy_url
+    kind: hidden
+    label: Will be called with 'oauth_credentials.refresh_token' to refresh the access
+      token
+    protected: false
+    required: 'false'
+  - name: oauth_credentials.refresh_proxy_url_auth
+    kind: hidden
+    label: Sets Authorization header on 'oauth_credentials.refresh_url' request
+    protected: false
+    required: 'false'
+  - name: oauth_credentials.client_id
+    kind: hidden
+    label: OAuth Client ID
+    protected: false
+    required: 'false'
+  - name: oauth_credentials.client_secret
+    kind: hidden
+    label: OAuth Client Secret
+    protected: false
+    required: 'false'
+  - name: start_date
+    kind: date_iso8601
+    label: Start Date
+    protected: false
+    required: 'false'
+  - name: end_date
+    kind: date_iso8601
+    label: End Date
+    protected: false
+    required: 'false'
+  - name: developer_token
+    kind: hidden
+    value: DYSuW0qdfU5-jti8Zdh1HQ
+    label: Developer Token
+    protected: false
+  - name: customer_id
+    kind: string
+    label: Customer Id
+    protected: false
+- name: tap-meltano
+  namespace: tap_meltano
+  hidden: false
+  label: Meltano
+  description: 'Meltano is a data pipeline and modular open source data ops platform.
+
+
+    When you run a Meltano job and you have a `MELTANO_DATABASE_URI` set, data about
+    that job run is stored in that database.
+
+
+    By using this data import, and providing an existing `MELTANO_DATABASE_URI`, you
+    will get insights on Meltano job runs.
+
+
+    ## Prerequisites
+
+
+    [Meltano Prerequisites](https://www.matatika.com/docs/data-sources/tap-meltano/prerequisites)
+
+
+    ## Data source settings
+
+
+    ### Meltano Database URI
+
+
+    Your target Meltano project''s database URI.
+
+
+    Example database URI: `postgresql://<username>:<password>@<host>:<port>/<database>?options=-csearch_path%3D<schema>`
+
+
+    ## Learn more
+
+
+    Learn more about the Meltano data source:
+
+
+    [Meltano Extractor Documentation](https://github.com/Matatika/tap-meltano/blob/master/README.md)'
+  image_url: /assets/images/datasource/tap-meltano.png
+  docs: https://www.matatika.com/docs/data-sources/tap-meltano/
+  repo: https://github.com/Matatika/tap-meltano
+  pip_url: git+https://github.com/Matatika/tap-meltano@v0.3.0
+  capabilities:
+  - state
+  - discover
+  - catalog
+  settings:
+  - name: meltano_database_uri
+    kind: password
+    label: Meltano_database_uri
+    protected: false
+    required: 'true'
+- name: tap-trello
+  namespace: tap_trello
+  hidden: false
+  label: Trello
+  description: 'Trello is a collaboration tool that organizes your projects into boards.
+
+
+    ## Prerequisites
+
+
+    [Trello Prerequisites](https://www.matatika.com/docs/data-sources/tap-trello/prerequisites)
+
+
+    ## Data source settings
+
+
+    ### Developer API Key
+
+
+    To get your Developer API Key:
+
+
+    1. Go to this link: [https://trello.com/app-key](https://trello.com/app-key) and
+    log in if needed.
+
+    2. The Developer API Key will be displayed below the title of the page.
+
+
+    ### Access Token
+
+
+    To get your Access Token:
+
+
+    1. Go to this link: [https://trello.com/app-key](https://trello.com/app-key) and
+    log in if needed.
+
+    2. Below the Developer API Key, click the generate a Token link.
+
+    3. You will now be show a screen about what permissions you are granting to your
+    API key. Click allow at the bottom of the page.
+
+    4. You will then be redirected to a page with a token, this is your Access Token.
+
+
+    ## Learn more
+
+
+    Learn more about the Meltano data source:
+
+
+    [Trello Data Source Documentation](https://www.matatika.com/docs/data-sources/tap-trello)'
+  image_url: /assets/images/datasource/tap-trello.png
+  variant: meltano
+  repo: https://github.com/Matatika/tap-trello
+  pip_url: git+https://github.com/Matatika/tap-trello@v0.3.0
+  capabilities:
+  - state
+  - discover
+  - catalog
+  settings:
+  - name: developer_api_key
+    kind: password
+    label: Developer API Key
+    protected: false
+  - name: access_token
+    kind: password
+    label: Access Token
+    protected: false
+  - name: start_date
+    kind: string
+    label: Start_date
+    protected: false
+    required: 'False'
+- name: tap-auth0
+  namespace: tap_auth0
+  hidden: false
+  label: Auth0
+  description: 'Auth0 is an identity and access management service, that allows you
+    to manage the access of your users.
+
+
+    ## Prerequisites
+
+
+    To find out how to get the required credentials for this data source please go
+    to our documentation: [Auth0 Prerequisites](https://www.matatika.com/docs/data-sources/tap-auth0/prerequisites)
+
+
+    ## Data source settings
+
+
+    ### Client ID
+
+
+    Your Auth0 Machine-to-Machine application client id.
+
+
+    ### Client Secret
+
+
+    Your Auth0 Machine-to-Machine application client secret.
+
+
+    ### Domain
+
+
+    Your Auth0 tenant domain in the format `<TENANT_NAME>.<REGION_IDENTIFIER>.auth0.com``
+
+
+    ## Learn more
+
+
+    Learn more about the Auth0 data source:
+
+
+    [Auth0 Data Source Documentation](https://www.matatika.com/docs/data-sources/tap-auth0)'
+  image_url: /assets/images/datasource/tap-auth0.png
+  variant: meltano
+  repo: https://github.com/Matatika/tap-auth0
+  pip_url: git+https://github.com/Matatika/tap-auth0@v0.3.1
+  capabilities:
+  - state
+  - discover
+  - catalog
+  settings:
+  - name: client_id
+    kind: password
+    label: Client ID
+    protected: false
+  - name: client_secret
+    kind: password
+    label: Client Secret
+    protected: false
+  - name: domain
+    kind: string
+    label: Domain
+    protected: false
+  - name: job_poll_interval_ms
+    kind: hidden
+    value: 2000
+    label: Job_poll_interval_ms
+    protected: false
+    required: 'false'
+  - name: job_poll_max_count
+    kind: hidden
+    value: 10
+    label: Job_poll_max_count
+    protected: false
+    required: 'false'
+- name: tap-solarvista
+  namespace: tap_solarvista
+  hidden: false
+  label: Solarvista Live
+  description: "Solarvista Live is a Field Service Management platform to manage,\
+    \ plan, and mobilise your engineers. \n\nThe Matatika Solarvista Live import will\
+    \ extract Solarvista data into your Matatika data store, giving you instant insights\
+    \ into revenue, projects, work items, and engineer performance.\n\n## Prerequisites\n\
+    \nBefore importing data from Solarvista Live you will need to have performed the\
+    \ initial setup in Solarvista.\n\n[Solarvista Live Prerequisites](https://www.matatika.com/docs/data-sources/tap-solarvista/prerequisites)\n\
+    \n\n## Data source settings\n\n### Account\n\nSolarvista API `account`\n\nTo get\
+    \ your `account` id you will need to follow the steps that are linked in our [Prerequisites](https://www.matatika.com/docs/data-sources/tap-solarvista/prerequisites)\
+    \ section.\n\n### ClientId\n\nSolarvista API `clientId`\n  \nTo get your `clientId`\
+    \ you will need to follow the steps that are linked in our [Prerequisites](https://www.matatika.com/docs/data-sources/tap-solarvista/prerequisites)\
+    \ section.\n  \n### Code\n  \nSolarvista API `code`\n  \nTo get your `code` you\
+    \ will need to follow the steps that are linked in our [Prerequisites](https://www.matatika.com/docs/data-sources/tap-solarvista/prerequisites)\
+    \ section.\n  \n### Datasources\n  \nLeave this field blank to accept the default\
+    \ Solarvista datasources or customise the type of data to sync, we support:\n\
+    - `customer`\n- `site`\n- `equipment`\n- `work-item`\n- `work-item-history`\n\
+    - `activity`\n- `users`\n- `territory`\n- `project`\n- `appointment`\n- `skill`\n\
+    \  \n  \n### Start Date\n  \nProviding a start date allows you to set how much\
+    \ historical data you wish to import into your workspace. \n  \nThis date has\
+    \ to be in the ISO-8601 date format, see the example below.\n  \nFormat: `YYYY-MM-DDTHH:MM:SSZ`\n\
+    Example: `2020-10-01T13:12:11Z`\n\n\n## Learn more\n\nLearn more about the Solarvista\
+    \ Live data source\n\n[Solavista Live Extractor Documentation](https://www.matatika.com/docs/data-sources/tap-solarvista)"
+  image_url: /assets/images/datasource/tap-solarvista.png
+  variant: matatika
+  docs: https://www.matatika.com/docs/data-sources/tap-solarvista/
+  repo: https://github.com/Matatika/tap-solarvista
+  pip_url: git+https://github.com/Matatika/tap-solarvista@v0.3.0
+  capabilities:
+  - state
+  settings:
+  - name: datasources
+    kind: string
+    label: Datasources
+    protected: false
+  - name: account
+    kind: string
+    label: Account
+    protected: false
+  - name: clientId
+    kind: string
+    label: Client ID
+    protected: false
+  - name: code
+    kind: password
+    label: Code
+    protected: false
+  - name: start_date
+    kind: date_iso8601
+    label: Start Date
+    protected: false
+- name: tap-spreadsheets-anywhere
+  namespace: tap_spreadsheets_anywhere
+  hidden: false
+  label: Spreadsheets Anywhere
+  description: "Spreadsheets anywhere allows you to read data from spreadsheets (CSVs,\
+    \ Excel, JSON) from cloud or local storage.\n\n## Data source settings\n\n###\
+    \ Files\n\nFiles takes JSON objects inside an Array to describe one or more target\
+    \ files.\n\nExample\n\n```json\n[{\n  \"path\":\"https://meltano.com/files\",\n\
+    \  \"name\":\"gitflixusers\",\n  \"pattern\":\"GitFlixUsers.csv\",\n  \"start_date\"\
+    :\"2021-01-01T00:00:00Z\",\n  \"key_properties\":[\"id\"],\n  \"format\":\"csv\"\
+    \n}]\n```\n\nNote no trailing `/` on the path, or prefixed `/` on the pattern.\
+    \ \n\nSpreadsheets Anywhere will build the URL back up correctly, so in this case\
+    \ it will look for a file at `https://meltano.com/files/GitFlixUsers.csv`\n\n\
+    Passing the above array containing JSON to our files field will sync the data\
+    \ of the file `GitFlixUsers.csv` into your datastore under the table name `gitflixusers`.\n\
+    \n## Learn more\n\nThese documentation links contain an overview of how Spreadsheets\
+    \ Anywhere works, its settings, capabilities, a list of all supported formats\
+    \ and some more examples.\n\n[Spreadsheets Anywhere GitHub Documentation](https://github.com/ets/tap-spreadsheets-anywhere/blob/master/README.md)\n\
+    \n[Spreadsheets Anywhere - Meltano Hub Documentation](https://hub.meltano.com/extractors/spreadsheets-anywhere)"
+  image_url: /assets/images/datasource/tap-spreadsheets-anywhere.png
+  docs: https://meltano.com/plugins/extractors/spreadsheets-anywhere.html
+  repo: https://github.com/ets/tap-spreadsheets-anywhere
+  pip_url: git+https://github.com/ets/tap-spreadsheets-anywhere.git
+  capabilities:
+  - state
+  - discover
+  - catalog
+  settings:
+  - name: tables
+    kind: array
+    label: Tables
+    description: An array holding json objects that each describe a set of targeted
+      source files. See docs for details.
+    protected: false
+- name: tap-google-analytics
+  namespace: tap_google_analytics
+  hidden: false
+  label: Google Analytics
+  description: "App and website analytics platform hosted by Google\n\n## Prerequisites\n\
+    \nBefore importing data from Google Analytics you or your webmaster will need\
+    \ to have performed some initial setup to grant\nyourself access to the Google\
+    \ Analytics for your website.\n\n[Google Analytics Prerequisites](https://www.matatika.com/docs/data-sources/tap-google-analytics/prerequisites)\n\
+    \n## Data source settings\n### View ID\n\nOnce you have connected with your google\
+    \ account, the `View ID` drop down will allow you to choose which view you want\
+    \ to get your data from.\n\n### Start Date\n\nProviding a start date allows you\
+    \ to set how much historical data you wish to import into you workspace. \n\n\
+    This date has to be in the ISO-8601 date format, see the example below.\n\nFormat:\
+    \ `YYYY-MM-DDTHH:MM:SSZ`\n\nExample: `2020-10-01T13:12:11Z`\n\n### End Date\n\n\
+    Providing an end date allows you to limit how much data you wish to import into\
+    \ you workspace. \n\nThis date has to be in the ISO-8601 date format, see the\
+    \ example below.\n\nFormat: `YYYY-MM-DDTHH:MM:SSZ`\n\nExample: `2020-10-01T13:12:11Z`\n\
+    \n### Reports\n\nProviding the path to a reports json file allows you to supply\
+    \ the tap with a user defined definition of tables and information you want to\
+    \ sync from Google Analytics.\nThis does require you to commit a file to your\
+    \ workspace repository so that Google Analytics can find it during run time, and\
+    \ may also break the dbt transforms that are required to have our included datasets\
+    \ work.\nFor more information on how to define a custom reports file see the [Meltano\
+    \ Hub Documentation](https://hub.meltano.com/extractors/google-analytics#reports).\n\
+    \n## Learn more\n\nLearn more about the Google Analytics data source\n\n[Google\
+    \ Analytics Extractor Documentation](https://hub.meltano.com/extractors/google-analytics)"
+  image_url: /assets/images/datasource/tap-google-analytics.svg
+  variant: meltano
+  docs: https://www.matatika.com/docs/data-sources/tap-google-analytics/
+  repo: https://github.com/Matatika/tap-google-analytics
+  pip_url: git+https://github.com/Matatika/tap-google-analytics@v0.3.0
+  capabilities:
+  - state
+  - discover
+  - catalog
+  settings:
+  - name: oauth_credentials.authorization_url
+    kind: hidden
+    value: https://oauth2.googleapis.com/token
+    label: OAuth identity provider authorization endpoint used create and refresh
+      tokens
+    protected: false
+  - name: oauth_credentials.scope
+    kind: hidden
+    value: profile email https://www.googleapis.com/auth/analytics.readonly
+    label: OAuth scopes we need to request access to
+    protected: false
+  - name: oauth_credentials.access_token
+    kind: hidden
+    label: Access Token
+    protected: false
+  - name: oauth_credentials.refresh_token
+    kind: hidden
+    label: OAuth Refresh Token
+    protected: false
+  - name: oauth_credentials.refresh_proxy_url
+    kind: hidden
+    label: Optional - will be called with 'oauth_credentials.refresh_token' to refresh
+      the access token
+    protected: false
+    required: 'false'
+  - name: oauth_credentials.refresh_proxy_url_auth
+    kind: hidden
+    label: Optional - Sets Authorization header on 'oauth_credentials.refresh_url'
+      request
+    protected: false
+    required: 'false'
+  - name: oauth_credentials.client_id
+    kind: hidden
+    label: Optional - OAuth Client ID used if refresh_proxy_url not supplied
+    protected: false
+    required: 'false'
+  - name: oauth_credentials.client_secret
+    kind: hidden
+    label: Optional - OAuth Client Secret used if refresh_proxy_url not supplied
+    protected: false
+    required: 'false'
+  - name: view_id
+    kind: string
+    label: View ID
+    placeholder: Ex. 198343027
+    protected: false
+  - name: reports
+    kind: string
+    label: Reports
+    placeholder: Ex. my_report_definition.json
+    protected: false
+    required: 'false'
+  - name: start_date
+    kind: date_iso8601
+    label: Start_date
+    protected: false
+  - name: end_date
+    kind: date_iso8601
+    label: End_date
+    protected: false
+    required: 'false'
+loaders:
+- name: target-postgres
+  namespace: postgres
+  hidden: false
+  label: PostgreSQL
+  description: 'PostgreSQL Data Warehouse
+
+
+    The World''s Most Advanced Open Source Relational Database
+
+
+    ## Settings
+
+    ### User
+
+    Postgres user
+
+    ### Password
+
+    Postgres password
+
+    ### Host
+
+    Postgres host
+
+    Example: `test-host.db.elephantsql.com`
+
+    ### Port
+
+    Postgres port
+
+    Example: `5432`
+
+    ### Database Name
+
+    Postgres database name
+
+    ### URL
+
+    [SQLAlchemy Postgres database URL](https://docs.sqlalchemy.org/en/14/core/engines.html#postgresql)
+    (overrides `user`, `password`, `host`, `port` and `dbname`)
+
+    ### Schema
+
+    Name of the schema where tables will be created (no database prefix)'
+  image_url: /assets/images/datastore/target-postgres.png
+  variant: meltano
+  docs: https://hub.meltano.com/loaders/postgres--meltano.html
+  repo: https://github.com/Matatika/target-postgres
+  pip_url: git+https://github.com/Matatika/target-postgres@v0.1.0
+  settings:
+  - name: user
+    aliases:
+    - username
+    kind: string
+    label: User
+    protected: false
+  - name: password
+    kind: password
+    label: Password
+    protected: false
+  - name: host
+    aliases:
+    - address
+    kind: string
+    label: Host
+    protected: false
+  - name: port
+    kind: integer
+    value: 5432
+    label: Port
+    protected: false
+  - name: dbname
+    aliases:
+    - database
+    kind: string
+    label: Database Name
+    protected: false
+  - name: url
+    kind: string
+    label: URL
+    description: Lets you set `user`, `password`, `host`, `port`, and `dbname` in
+      one go using a `postgresql://` URI. Takes precedence over the other settings
+      when set.
+    protected: false
+    required: 'false'
+  - name: schema
+    kind: string
+    value: analytics
+    label: Schema
+    protected: false
+- name: target-postgres--transferwise
+  namespace: postgres_transferwise
+  hidden: false
+  label: PostgreSQL
+  description: 'PostgreSQL Data Warehouse
+
+
+    The World''s Most Advanced Open Source Relational Database
+
+
+    ## Settings
+
+
+    ### User
+
+    Postgres user
+
+
+    ### Password
+
+    Postgres password
+
+
+    ### Host
+
+    Postgres host
+
+    Example: `test-host.db.elephantsql.com`
+
+
+    ### Port
+
+    Postgres port
+
+    Example: `5432`
+
+
+    ### Database Name
+
+    Postgres database name
+
+
+    ### Default Target Schema
+
+    Name of the schema where tables will be created (no database prefix)'
+  image_url: /assets/images/datastore/target-postgres.png
+  variant: transferwise
+  docs: https://hub.meltano.com/loaders/postgres.html
+  repo: https://github.com/transferwise/pipelinewise-target-postgres
+  pip_url: git+https://github.com/Matatika/pipelinewise-target-postgres@v0.1.0
+  executable: target-postgres
+  settings:
+  - name: user
+    aliases:
+    - username
+    kind: string
+    label: User
+    description: PostgreSQL user
+    protected: false
+  - name: password
+    kind: password
+    label: Password
+    description: PostgreSQL password
+    protected: false
+  - name: host
+    aliases:
+    - address
+    kind: string
+    label: Host
+    description: PostgreSQL host
+    protected: false
+  - name: port
+    kind: integer
+    value: 5432
+    label: Port
+    description: PostgreSQL port
+    protected: false
+  - name: dbname
+    aliases:
+    - database
+    kind: string
+    label: Database Name
+    description: PostgreSQL database name
+    protected: false
+  - name: default_target_schema
+    kind: string
+    value: analytics
+    label: Default Target Schema
+    description: Name of the schema where the tables will be created.
+    protected: false
+  - name: ssl
+    kind: hidden
+    value: 'false'
+    label: SSL
+    protected: false
+    value_post_processor: stringify
+    required: 'false'
+  - name: batch_size_rows
+    kind: hidden
+    value: 100000
+    label: Batch Size Rows
+    description: Maximum number of rows in each batch. At the end of each batch, the
+      rows in the batch are loaded into Postgres.
+    protected: false
+    required: 'false'
+  - name: underscore_camel_case_fields
+    kind: hidden
+    value: 'true'
+    label: Underscore Camel Case Fields
+    description: Enable underscoring camel case field names, make the resulting postgres
+      column names the same as from the Meltano variant of target-postgres.
+    protected: false
+    required: 'false'
+  - name: flush_all_streams
+    kind: hidden
+    value: 'false'
+    label: Flush All Streams
+    description: 'Flush and load every stream into Postgres when one batch is full.
+      Warning: This may trigger the COPY command to use files with low number of records.'
+    protected: false
+    required: 'false'
+  - name: parallelism
+    kind: hidden
+    value: 0
+    label: Parallelism
+    description: The number of threads used to flush tables. 0 will create a thread
+      for each stream, up to parallelism_max. -1 will create a thread for each CPU
+      core. Any other positive number will create that number of threads, up to parallelism_max.
+    protected: false
+    required: 'false'
+  - name: parallelism_max
+    kind: hidden
+    value: 16
+    label: Max Parallelism
+    description: Max number of parallel threads to use when flushing tables.
+    protected: false
+    required: 'false'
+  - name: default_target_schema_select_permission
+    kind: hidden
+    label: Default Target Schema Select Permission
+    description: Grant USAGE privilege on newly created schemas and grant SELECT privilege
+      on newly created tables to a specific role or a list of roles. If `schema_mapping`
+      is not defined then every stream sent by the tap is granted accordingly.
+    protected: false
+    required: 'false'
+  - name: schema_mapping
+    kind: hidden
+    label: Schema Mapping
+    description: 'Useful if you want to load multiple streams from one tap to multiple
+      Postgres schemas.
+
+
+      If the tap sends the `stream_id` in `<schema_name>-<table_name>` format then
+      this option overwrites the `default_target_schema` value.
+
+      Note, that using `schema_mapping` you can overwrite the `default_target_schema_select_permission`
+      value to grant SELECT permissions to different groups per schemas or optionally
+      you can create indices automatically for the replicated tables.
+
+      '
+    protected: false
+    required: 'false'
+  - name: add_metadata_columns
+    kind: hidden
+    value: 'true'
+    label: Add Metadata Columns
+    description: Metadata columns add extra row level information about data ingestions,
+      (i.e. when was the row read in source, when was inserted or deleted in postgres
+      etc.) Metadata columns are creating automatically by adding extra columns to
+      the tables with a column prefix `_SDC_`. The column names are following the
+      stitch naming conventions documented at https://www.stitchdata.com/docs/data-structure/integration-schemas#sdc-columns.
+      Enabling metadata columns will flag the deleted rows by setting the `_SDC_DELETED_AT`
+      metadata column. Without the `add_metadata_columns` option the deleted rows
+      from singer taps will not be recongisable in Postgres.
+    protected: false
+    required: 'false'
+  - name: hard_delete
+    kind: hidden
+    value: 'false'
+    label: Hard Delete
+    description: When `hard_delete` option is true then DELETE SQL commands will be
+      performed in Postgres to delete rows in tables. It's achieved by continuously
+      checking the `_SDC_DELETED_AT` metadata column sent by the singer tap. Due to
+      deleting rows requires metadata columns, `hard_delete` option automatically
+      enables the `add_metadata_columns` option as well.
+    protected: false
+    required: 'false'
+  - name: data_flattening_max_level
+    kind: hidden
+    value: 10
+    label: Data Flattening Max Level
+    description: Object type RECORD items from taps can be transformed to flattened
+      columns by creating columns automatically. When value is 0 (default) then flattening
+      functionality is turned off.
+    protected: false
+    required: 'false'
+  - name: primary_key_required
+    kind: hidden
+    value: 'true'
+    label: Primary Key Required
+    description: Log based and Incremental replications on tables with no Primary
+      Key cause duplicates when merging UPDATE events. When set to true, stop loading
+      data if no Primary Key is defined.
+    protected: false
+    required: 'false'
+  - name: validate_records
+    kind: hidden
+    value: 'false'
+    label: Validate Records
+    description: Validate every single record message to the corresponding JSON schema.
+      This option is disabled by default and invalid RECORD messages will fail only
+      at load time by Postgres. Enabling this option will detect invalid records earlier
+      but could cause performance degradation.
+    protected: false
+    required: 'false'
+  - name: temp_dir
+    kind: hidden
+    label: Temporary Directory
+    description: '(Default: platform-dependent) Directory of temporary CSV files with
+      RECORD messages.'
+    protected: false
+    required: 'false'
+- name: target-snowflake
+  namespace: snowflake
+  hidden: false
+  label: Snowflake
+  description: 'Snowflake Data Warehouse
+
+
+    Accelerate your analytics with the data platform built to enable the modern cloud
+    data warehouse.
+
+
+    ## Settings
+
+    ### Account
+
+    Snowflake account
+
+
+    Example: `XC93539`
+
+
+    ### Username
+
+    Snowflake login username
+
+
+    ### Password
+
+    Snowflake login password
+
+
+    ### Role
+
+    Name of the role used for loading data - this role is granted to all created schemas
+    and tables
+
+
+    Example: `PUBLIC`
+
+
+    ### Database
+
+    Snowflake database name
+
+
+    ### Warehouse
+
+    Snowflake virtual warehouse name
+
+
+    Example: `COMPUTE_WH`
+
+
+    ### Schema
+
+    Name of the schema where tables will be created (no database prefix)
+
+
+    ### Batch Size
+
+    Maximum number of rows in each [batch](https://docs.snowflake.com/en/sql-reference/external-functions-best-practices.html#process-one-row-at-a-time)
+
+
+    ### Timestamp Column
+
+    Name of the column used to store timestamps corresponding to when data was loaded
+    into the table'
+  image_url: /assets/images/datastore/target-snowflake.png
+  variant: meltano
+  docs: https://hub.meltano.com/loaders/snowflake--meltano.html
+  repo: https://github.com/Matatika/target-snowflake
+  pip_url: git+https://github.com/Matatika/target-snowflake@v0.1.0
+  settings:
+  - name: account
+    kind: string
+    label: Account
+    description: Account Name in Snowflake (https://XXXXX.snowflakecomputing.com)
+    protected: false
+  - name: username
+    kind: string
+    label: Username
+    description: The username you use for logging in
+    protected: false
+  - name: password
+    kind: password
+    label: Password
+    description: The password you use for logging in
+    protected: false
+  - name: role
+    kind: string
+    label: Role
+    description: Role to be used for loading the data, e.g. `LOADER`. Also this role
+      is GRANTed usage to all tables and schemas created
+    protected: false
+  - name: database
+    kind: string
+    label: Database
+    description: The name of the Snowflake database you want to use
+    protected: false
+  - name: warehouse
+    kind: string
+    label: Warehouse
+    description: The name of the Snowflake warehouse you want to use
+    protected: false
+  - name: schema
+    kind: string
+    value: analytics
+    label: Schema
+    protected: false
+    value_processor: upcase_string
+  - name: batch_size
+    kind: integer
+    value: 5000
+    label: Batch Size
+    description: How many records are sent to Snowflake at a time?
+    protected: false
+  - name: timestamp_column
+    kind: string
+    value: __loaded_at
+    label: Timestamp Column
+    description: Name of the column used for recording the timestamp when Data are
+      uploaded to Snowflake.
+    protected: false
+transforms:
+- name: dbt-google-analytics
+  namespace: tap_google_analytics
+  hidden: false
+  label: Dbt Google Analytics
+  vars:
+    schema: '{{ env_var(''DBT_SOURCE_SCHEMA'') }}'
+  variant: meltano
+  repo: https://github.com/Matatika/dbt-tap-google-analytics
+  pip_url: https://github.com/Matatika/dbt-tap-google-analytics@v0.3.0
+- name: dbt-googleads
+  namespace: tap_googleads
+  hidden: false
+  label: Dbt Googleads
+  vars:
+    schema: '{{ env_var(''DBT_SOURCE_SCHEMA'') }}'
+  variant: meltano
+  repo: https://github.com/Matatika/dbt-tap-googleads
+  pip_url: https://github.com/Matatika/dbt-tap-googleads@v0.3.0
+- name: dbt-solarvista
+  namespace: tap_solarvista
+  hidden: false
+  label: Dbt Solarvista
+  vars:
+    schema: '{{ env_var(''DBT_SOURCE_SCHEMA'') }}'
+  variant: matatika
+  repo: https://github.com/Matatika/dbt-tap-solarvista
+  pip_url: https://github.com/Matatika/dbt-tap-solarvista@v0.3.0
+- name: dbt-meltano
+  namespace: tap_meltano
+  hidden: false
+  label: Dbt Meltano
+  vars:
+    schema: '{{ env_var(''DBT_SOURCE_SCHEMA'') }}'
+  variant: meltano
+  repo: https://github.com/Matatika/dbt-tap-meltano
+  pip_url: https://github.com/Matatika/dbt-tap-meltano@v0.3.0
+- name: dbt-tap-trello
+  namespace: tap_trello
+  hidden: false
+  label: Dbt Tap Trello
+  vars:
+    schema: '{{ env_var(''DBT_SOURCE_SCHEMA'') }}'
+  pip_url: https://github.com/Matatika/dbt-tap-trello@v0.3.0
+models:
+- name: model-google-analytics
+  namespace: tap_google_analytics
+  hidden: false
+  label: Model Google Analytics
+  variant: meltano
+  repo: https://gitlab.com/meltano/model-google-analytics
+  pip_url: git+https://gitlab.com/meltano/model-google-analytics.git
+transformers:
+- name: dbt
+  namespace: dbt
+  docs: https://meltano.com/docs/transforms.html
+  repo: https://github.com/dbt-labs/dbt-core
+  pip_url: dbt==0.20.2
+  settings:
+  - name: project_dir
+    value: $MELTANO_PROJECT_ROOT/transform
+  - name: profiles_dir
+    env: DBT_PROFILES_DIR
+    value: $MELTANO_PROJECT_ROOT/transform/profile
+  - name: target
+    value: $MELTANO_LOAD__DIALECT
+  - name: source_schema
+    value: $MELTANO_LOAD__TARGET_SCHEMA
+  - name: target_schema
+    value: analytics
+  - name: models
+    value: $MELTANO_TRANSFORM__PACKAGE_NAME $MELTANO_EXTRACTOR_NAMESPACE my_meltano_project
+  commands:
+    clean:
+      args: clean
+      description: Delete all folders in the clean-targets list (usually the dbt_modules
+        and target directories.)
+    compile:
+      args: compile --models $DBT_MODELS
+      description: Generates executable SQL from source model, test, and analysis
+        files. Compiled SQL files are written to the target/ directory.
+    deps:
+      args: deps
+      description: Pull the most recent version of the dependencies listed in packages.yml
+    run:
+      args: run --models $DBT_MODELS
+      description: Compile SQL and execute against the current target database.
+    seed:
+      args: seed
+      description: Load data from csv files into your data warehouse.
+    snapshot:
+      args: snapshot
+      description: Execute snapshots defined in your project.
+    test:
+      args: test
+      description: Runs tests on data in deployed models.
+files:
+- name: analyze-trello
+  namespace: tap_trello
+  hidden: false
+  label: Analyze Trello
+  update:
+    analyze/datasets/tap-trello: 'true'
+  pip_url: git+https://github.com/Matatika/analyze-trello@v0.4.0
+- name: dbt
+  namespace: dbt
+  hidden: false
+  label: Dbt
+  update:
+    transform/profile/profiles.yml: 'true'
+  repo: https://github.com/Matatika/files-dbt
+  pip_url: git+https://github.com/Matatika/files-dbt@v0.20.x.1
+- name: analyze-google-analytics
+  namespace: tap_google_analytics
+  hidden: false
+  label: Analyze Google Analytics
+  update:
+    analyze/datasets: 'true'
+  repo: https://github.com/Matatika/analyze-google-analytics
+  pip_url: git+https://github.com/Matatika/analyze-google-analytics@v0.4.0
+- name: analyze-auth0
+  namespace: tap_auth0
+  hidden: false
+  label: Analyze Auth0
+  update:
+    analyze/datasets/tap-auth0: 'true'
+  pip_url: git+https://github.com/Matatika/analyze-auth0@v0.4.1
+- name: analyze-sit
+  namespace: tap_matatika_sit
+  hidden: false
+  label: Analyze Sit
+  update:
+    analyze/datasets/tap-matatika-sit/user-ages.yml: 'true'
+    analyze/datasets/tap-matatika-sit/user-genders.yml: 'true'
+  repo: https://github.com/Matatika/analyze-sit
+  pip_url: git+https://github.com/Matatika/analyze-sit.git
+- name: analyze-googleads
+  namespace: tap_googleads
+  hidden: false
+  label: Analyze Googleads
+  update:
+    analyze/datasets/tap-googleads: 'true'
+  repo: https://github.com/Matatika/analyze-googleads
+  pip_url: git+https://github.com/Matatika/analyze-googleads@v0.4.0
+- name: analyze-solarvista
+  namespace: tap_solarvista
+  hidden: false
+  label: Analyze Solarvista
+  update:
+    analyze/datasets: 'true'
+  repo: https://github.com/Matatika/analyze-solarvista
+  pip_url: git+https://github.com/Matatika/analyze-solarvista@v0.4.0
+- name: analyze-meltano
+  namespace: tap_meltano
+  hidden: false
+  label: Analyze Meltano
+  update:
+    analyze/datasets/tap-meltano: 'true'
+  repo: https://github.com/Matatika/analyze-meltano
+  pip_url: git+https://github.com/Matatika/analyze-meltano@v0.4.0
