@@ -1,0 +1,41 @@
+version: datasets/v0.2
+source: tap-google-analytics
+title: "Google Analytics Top 5 User Countries Last 90 Days"
+questions: ‘What are the top 5 countries our users visit from in the last 90 days?’
+description: |-
+  Google analytics op 5 user countries for the last 90 days.
+
+  #google-analytics
+metadata: |-
+  {
+      "name": "google_analytics_locations",
+      "label": "Top 5 User Countries",
+      "related_table": {
+        "columns": [
+          {"name": "country", "label": "Country", "description": "Country"}
+        ], 
+        "aggregates": [
+            {"name": "total_users", "label": "Total Users", "description": "Total Users"}
+        ]
+      }
+  }
+visualisation: |-
+  {"chartjs-chart": {"chartType": "bar", 
+      "options": {
+        "scales": {
+          "y": {
+            "beginAtZero": true
+          }
+        }
+      }
+    }
+  }
+query: |-
+  SELECT
+    country "google_analytics_locations.country"
+    , sum(users) "google_analytics_locations.total_users"
+  FROM google_analytics_locations
+  WHERE report_date >= current_date - interval '90 day'
+  GROUP BY country
+  ORDER BY sum(users) DESC, country ASC
+  LIMIT 5;

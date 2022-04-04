@@ -1,0 +1,41 @@
+version: datasets/v0.2
+source: tap-google-analytics
+title: "Google Analytics Daily Users Last 14 Days"
+questions: ‘How many users has there been over the last 14 days?’
+description: |-
+  Daily users over the last 14 days.
+
+  #google-analytics
+metadata: |-
+  {
+      "name": "google_analytics_locations",
+      "label": "Daily Users",
+      "related_table": {
+        "columns": [
+            {"name": "report_date", "label": "Date", "description": "Date"}
+        ], 
+        "aggregates": [
+            {"name": "total_users", "label": "Total Users", "description": "Total Users"}
+        ]
+      }
+  }
+visualisation: |-
+  {"chartjs-chart": {"chartType": "bar", 
+      "options": {
+        "scales": {
+          "y": {
+            "beginAtZero": true
+          }
+        }
+      }
+    }
+  }
+query: |-
+  SELECT 
+    report_date "google_analytics_locations.report_date"
+    , sum(users) "google_analytics_locations.total_users"
+  FROM google_analytics_locations
+  WHERE report_date >= current_date - interval '14 day'
+  AND report_date < current_date
+  GROUP BY report_date 
+  ORDER BY report_date

@@ -1,0 +1,36 @@
+version: datasets/v0.2
+source: tap-google-analytics
+title: "Google Analytics Monthly Comparison Stats Last 3 Months"
+questions: ‘How are our analytics tracking comparatively for the last 3 months?’
+description: |-
+  Google analytics monthly comparison stats for the last 3 months.
+
+  #google-analytics
+metadata: |-
+  {
+      "name": "gamcs",
+      "label": "Monthly Comparison Stats",
+      "related_table": {
+        "columns": [
+            {"name": "year_month", "label": "Year & Month", "description": "Year & Month"}
+        ], 
+        "aggregates": [
+            {"name": "users_increase_percent", "label": "Users Increase Percent", "description": "Users Increase Percent"},
+            {"name": "new_users_increase_percent", "label": "New Users Increase Percent", "description": "New Users Increase Percent"},
+            {"name": "sessions_increase_percent", "label": "Sessions Increase Percent", "description": "Sessions Increase Percent"},
+            {"name": "bounce_rate_increase_percent", "label": "Bounce Rate Increase Percent", "description": "Bounce Rate Increase Percent"}
+        ]
+      }
+  }
+visualisation: |-
+  {"chartjs-chart": {"chartType": "bar"}}
+query: |-
+  SELECT 
+    concat(year, '-', month) "gamcs.year_month"
+    , users_increase_percent "gamcs.users_increase_percent"
+    , new_users_increase_percent "gamcs.new_users_increase_percent"
+    , sessions_increase_percent "gamcs.sessions_increase_percent"
+    , bounce_rate_increase_percent "gamcs.bounce_rate_increase_percent"
+  FROM google_analytics_monthly_comparison_stats
+  WHERE month_start >= current_date - interval '3 month'
+  ORDER BY month_start ASC
