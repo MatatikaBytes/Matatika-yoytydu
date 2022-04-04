@@ -6,6 +6,9 @@ plugins:
   - name: tap-google-analytics
     variant: meltano
     pip_url: git+https://github.com/Matatika/tap-google-analytics@v0.3.0
+  - name: tap-auth0
+    variant: meltano
+    pip_url: git+https://github.com/Matatika/tap-auth0@v0.3.1
   loaders:
   - name: target-postgres--transferwise
     variant: transferwise
@@ -26,3 +29,5 @@ plugins:
     pip_url: git+https://github.com/Matatika/files-dbt@v0.20.x.1
   - name: analyze-google-analytics
     pip_url: git+https://github.com/Matatika/analyze-google-analytics@v0.4.0
+  - name: analyze-auth0
+    pip_url: git+https://github.com/Matatika/analyze-auth0@v0.4.1
