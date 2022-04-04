@@ -1,0 +1,41 @@
+version: datasets/v0.2
+source: tap-auth0
+title: Users Per Day Last 90 Days
+questions: How many users logged in per day for the last 90 days?
+description: |-
+  Users per day for the last 90 days.
+
+  #auth0
+metadata: |-
+  {
+    "name": "stream_auth0_logs",
+    "label": "Users Per Day Last 90 Days", 
+    "related_table": {
+      "columns": [
+        {"name": "date", "label": "Date", "description": "Date"}
+      ],
+      "aggregates": [
+        {"name": "users", "label": "Users", "description": "Users"}
+      ]
+    }
+  }
+visualisation: |-
+  {"chartjs-chart": 
+    {"chartType": "bar", 
+      "options": {
+        "scales": {
+          "y": {
+            "beginAtZero": true
+          }
+        }
+      }
+    }
+  }
+query: |-
+  SELECT 
+    date::date "stream_auth0_logs.date"
+    ,COUNT(DISTINCT(user_id)) "stream_auth0_logs.users"
+  FROM stream_auth0_logs
+  WHERE type = 's'
+  AND date >= current_date - interval '90 day'
+  GROUP BY date::date
