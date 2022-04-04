@@ -1,3 +1,24 @@
 version: 1
 send_anonymous_usage_stats: true
 project_id: 9a587732-c3c2-4dfa-8a1f-04de1e526055
+plugins:
+  extractors:
+  - name: tap-google-analytics
+    variant: meltano
+    pip_url: git+https://github.com/Matatika/tap-google-analytics@v0.3.0
+  transforms:
+  - name: dbt-google-analytics
+    variant: meltano
+    pip_url: https://github.com/Matatika/dbt-tap-google-analytics@v0.3.0
+  models:
+  - name: model-google-analytics
+    variant: meltano
+    pip_url: git+https://gitlab.com/meltano/model-google-analytics.git
+  transformers:
+  - name: dbt
+    pip_url: dbt==0.20.2
+  files:
+  - name: dbt
+    pip_url: git+https://github.com/Matatika/files-dbt@v0.20.x.1
+  - name: analyze-google-analytics
+    pip_url: git+https://github.com/Matatika/analyze-google-analytics@v0.4.0
