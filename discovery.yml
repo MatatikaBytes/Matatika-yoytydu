@@ -12,9 +12,9 @@ extractors:
   pip_url: git+https://github.com/ets/tap-spreadsheets-anywhere.git
   executable: tap-spreadsheets-anywhere
   capabilities:
-  - state
-  - discover
   - catalog
+  - discover
+  - state
   settings:
   - name: tables
     kind: array
@@ -27,30 +27,83 @@ extractors:
   namespace: tap_googleads
   hidden: false
   label: Google Ads
-  description: "App and website ads platform hosted by Google.\n\n## Prerequisites\n\
-    \n[Google Ads Prerequisites](https://www.matatika.com/docs/data-sources/tap-googleads/prerequisites)\n\
-    \n## Data source settings\n\n### Customer Id\n\nCustomer Id is the account id\
-    \ of your Google Ads account with the ads campaigns, and therefore data, that\
-    \ will get synced.\n\nYour Customer Id is usually in the format '111-111-1111'\
-    \ but to make requests to the api we have to remove the dashes.\n\n### Start Date\n\
-    \nProviding a start date allows you to set how much historical data you wish to\
-    \ import into you workspace. \n\nIf you do not provide a start date the tap will\
-    \ set a date of one year ago.\n\nThis date has to be in the ISO-8601 date format,\
-    \ see the example below.\n\nFormat: `YYYY-MM-DDTHH:MM:SSZ`\n\nExample: `2020-10-01T13:12:11Z`\n\
-    \n### End Date\n\nProviding a end date allows you to set how much historical data\
-    \ you wish to import into you workspace. \n\nIf you do not provide a end date\
-    \ the tap will sync all data up to the current date.\n\nThis date has to be in\
-    \ the ISO-8601 date format, see the example below.\n\nFormat: `YYYY-MM-DDTHH:MM:SSZ`\n\
-    \nExample: `2020-10-01T13:12:11Z`\n\n## Learn more\n\nLearn more about the Google\
-    \ Ads data source\n\n[Google Ads Extractor Documentation](https://github.com/Matatika/tap-googleads/blob/main/README.md)"
+  description: 'App and website ads platform hosted by Google.
+
+
+    ## Prerequisites
+
+
+    [Google Ads Prerequisites](https://www.matatika.com/docs/data-sources/tap-googleads/prerequisites)
+
+
+    ## Data source settings
+
+
+    ### Customer Id
+
+
+    Customer Id is the account id of your Google Ads account with the ads campaigns,
+    and therefore data, that will get synced.
+
+
+    Your Customer Id is usually in the format ''111-111-1111'' but to make requests
+    to the api we have to remove the dashes.
+
+
+    ### Start Date
+
+
+    Providing a start date allows you to set how much historical data you wish to
+    import into you workspace.
+
+
+    If you do not provide a start date the tap will set a date of one year ago.
+
+
+    This date has to be in the ISO-8601 date format, see the example below.
+
+
+    Format: `YYYY-MM-DDTHH:MM:SSZ`
+
+
+    Example: `2020-10-01T13:12:11Z`
+
+
+    ### End Date
+
+
+    Providing a end date allows you to set how much historical data you wish to import
+    into you workspace.
+
+
+    If you do not provide a end date the tap will sync all data up to the current
+    date.
+
+
+    This date has to be in the ISO-8601 date format, see the example below.
+
+
+    Format: `YYYY-MM-DDTHH:MM:SSZ`
+
+
+    Example: `2020-10-01T13:12:11Z`
+
+
+    ## Learn more
+
+
+    [Matatika Google Ads Data Source Documentation](https://www.matatika.com/docs/data-sources/tap-googleads)
+
+
+    [Meltano Hub Google Ads Documentation](https://hub.meltano.com/taps/googleads)'
   image_url: /assets/images/datasource/tap-googleads.svg
   docs: https://www.matatika.com/docs/data-sources/tap-googleads/
   repo: https://github.com/Matatika/tap-googleads
-  pip_url: git+https://github.com/Matatika/tap-googleads@v0.3.0
+  pip_url: git+https://github.com/Matatika/tap-googleads@v0.3.1
   capabilities:
-  - state
-  - discover
   - catalog
+  - discover
+  - state
   settings:
   - name: oauth_credentials.authorization_url
     kind: hidden
@@ -111,6 +164,40 @@ extractors:
     kind: string
     label: Customer Id
     protected: false
+- name: tap-shopify
+  namespace: tap_shopify
+  hidden: false
+  label: Shopify
+  description: "E-commerce platform for online stores and retail point-of-sale systems.\n\
+    \n## Prerequisites\n\nBefore importing data from Shopify, you or your store admin\
+    \ may need to perform some\ninitial setup to grant read access.\n\n[Prerequisites](https://www.matatika.com/docs/data-sources/tap-shopify/prerequisites)\n\
+    \n## Settings\n\n### Access Token\n\nThe access token to authenticate with the\
+    \ Shopify API.  See Prerequisites.\n\n\n### Store\n\nShopify store id, use the\
+    \ prefix of your admin url.\n\ne.g. https://<your store id>.myshopify.com/admin\n\
+    \n\n### Start Date\n\nProvide a start date to control the amount of historical\
+    \ data. \n\nFormat: `YYYY-MM-DDTHH:MM:SSZ`\nExample: `2020-10-01T13:12:11Z`\n\n\
+    \n## Learn more\n\nLearn more about the Shopify data source\n\n[Extractor Documentation](https://www.matatika.com/docs/data-sources/tap-shopify)"
+  image_url: /assets/images/datasource/tap-shopify.png
+  variant: matatika
+  docs: https://www.matatika.com/docs/data-sources/tap-shopify/
+  repo: https://github.com/Matatika/tap-shopify
+  pip_url: git+https://github.com/Matatika/tap-shopify
+  capabilities:
+  - state
+  settings:
+  - name: access_token
+    kind: password
+    label: Access Token
+    protected: false
+  - name: store
+    kind: string
+    label: Store
+    protected: false
+  - name: start_date
+    kind: date_iso8601
+    label: Start Date
+    protected: false
+    required: 'false'
 - name: tap-meltano
   namespace: tap_meltano
   hidden: false
@@ -138,7 +225,8 @@ extractors:
     ### Meltano Database URI
 
 
-    Your target Meltano project''s database URI.
+    Your target Meltano project''s database URI. By default, (if left blank), this
+    value will be set to your workspace''s Meltano database URI.
 
 
     Example database URI: `postgresql://<username>:<password>@<host>:<port>/<database>?options=-csearch_path%3D<schema>`
@@ -147,22 +235,92 @@ extractors:
     ## Learn more
 
 
-    Learn more about the Meltano data source:
+    [Matatika Meltano Data Source Documentation](https://www.matatika.com/docs/data-sources/tap-meltano)
 
 
-    [Meltano Extractor Documentation](https://github.com/Matatika/tap-meltano/blob/master/README.md)'
+    [Meltano Hub Meltano Documentation](https://hub.meltano.com/taps/meltano)'
   image_url: /assets/images/datasource/tap-meltano.png
   docs: https://www.matatika.com/docs/data-sources/tap-meltano/
   repo: https://github.com/Matatika/tap-meltano
   pip_url: git+https://github.com/Matatika/tap-meltano@v0.3.0
   capabilities:
-  - state
-  - discover
   - catalog
+  - discover
+  - state
   settings:
   - name: meltano_database_uri
     kind: password
+    value: $MELTANO_DATABASE_URI
     label: Meltano_database_uri
+    protected: false
+    required: 'true'
+- name: tap-spotify
+  namespace: tap_spotify
+  hidden: false
+  label: Spotify
+  description: 'Spotify is a digital music streaming service.
+
+
+    By using this data import you will see insights into your music trends.
+
+
+    ## Prerequisites
+
+
+    To get you Spotify credentials you can follow the steps listed in the [Spotify
+    Prerequisites](https://www.matatika.com/docs/data-sources/tap-spotify/prerequisites).
+
+
+    ## Data source settings
+
+
+    ### Client ID
+
+
+    Your Spotify Client ID.
+
+
+    ### Client Secret
+
+
+    Your Spotify Client Secret.
+
+
+    ### Refresh Token
+
+
+    Your Spotify Client Refresh Token.
+
+
+    ## Learn more
+
+
+    [Matatika Spotify Data Source Documentation](https://www.matatika.com/docs/data-sources/tap-spotify)
+
+
+    [Meltano Hub Spotify Documentation](https://hub.meltano.com/taps/spotify)'
+  image_url: /assets/images/datasource/tap-spotify.png
+  docs: https://www.matatika.com/docs/data-sources/tap-spotify/
+  repo: https://github.com/Matatika/tap-spotify
+  pip_url: git+https://github.com/Matatika/tap-spotify@v0.3.0
+  capabilities:
+  - catalog
+  - discover
+  - state
+  settings:
+  - name: client_id
+    kind: password
+    label: Client_id
+    protected: false
+    required: 'true'
+  - name: client_secret
+    kind: password
+    label: Client_secret
+    protected: false
+    required: 'true'
+  - name: refresh_token
+    kind: password
+    label: Refresh_token
     protected: false
     required: 'true'
 - name: tap-trello
@@ -213,18 +371,18 @@ extractors:
     ## Learn more
 
 
-    Learn more about the Meltano data source:
+    [Matatika Trello Data Source Documentation](https://www.matatika.com/docs/data-sources/tap-trello)
 
 
-    [Trello Data Source Documentation](https://www.matatika.com/docs/data-sources/tap-trello)'
+    [Meltano Hub Trello Documentation](https://hub.meltano.com/taps/trello--matatika)'
   image_url: /assets/images/datasource/tap-trello.png
   variant: meltano
   repo: https://github.com/Matatika/tap-trello
   pip_url: git+https://github.com/Matatika/tap-trello@v0.3.0
   capabilities:
-  - state
-  - discover
   - catalog
+  - discover
+  - state
   settings:
   - name: developer_api_key
     kind: password
@@ -239,6 +397,60 @@ extractors:
     label: Start_date
     protected: false
     required: 'False'
+- name: tap-solarvista
+  namespace: tap_solarvista
+  hidden: false
+  label: Solarvista Live
+  description: "Solarvista Live is a Field Service Management platform to manage,\
+    \ plan, and mobilise your engineers. \n\nThe Matatika Solarvista Live import will\
+    \ extract Solarvista data into your Matatika data store, giving you instant insights\
+    \ into revenue, projects, work items, and engineer performance.\n\n## Prerequisites\n\
+    \nBefore importing data from Solarvista Live you will need to have performed the\
+    \ initial setup in Solarvista.\n\n[Solarvista Live Prerequisites](https://www.matatika.com/docs/data-sources/tap-solarvista/prerequisites)\n\
+    \n\n## Data source settings\n\n### Account\n\nSolarvista API `account`\n\nTo get\
+    \ your `account` id you will need to follow the steps that are linked in our [Prerequisites](https://www.matatika.com/docs/data-sources/tap-solarvista/prerequisites)\
+    \ section.\n\n### ClientId\n\nSolarvista API `clientId`\n  \nTo get your `clientId`\
+    \ you will need to follow the steps that are linked in our [Prerequisites](https://www.matatika.com/docs/data-sources/tap-solarvista/prerequisites)\
+    \ section.\n  \n### Code\n  \nSolarvista API `code`\n  \nTo get your `code` you\
+    \ will need to follow the steps that are linked in our [Prerequisites](https://www.matatika.com/docs/data-sources/tap-solarvista/prerequisites)\
+    \ section.\n  \n### Datasources\n  \nLeave this field blank to accept the default\
+    \ Solarvista datasources or customise the type of data to sync, we support:\n\
+    - `customer`\n- `site`\n- `equipment`\n- `work-item`\n- `work-item-history`\n\
+    - `activity`\n- `users`\n- `territory`\n- `project`\n- `appointment`\n- `skill`\n\
+    \  \n  \n### Start Date\n  \nProviding a start date allows you to set how much\
+    \ historical data you wish to import into your workspace. \n  \nThis date has\
+    \ to be in the ISO-8601 date format, see the example below.\n  \nFormat: `YYYY-MM-DDTHH:MM:SSZ`\n\
+    Example: `2020-10-01T13:12:11Z`\n\n\n## Learn more\n\n[Matatika Solavista Live\
+    \ Data Source Documentation](https://www.matatika.com/docs/data-sources/tap-solarvista)\n\
+    \n[Meltano Hub Solarvista Live Documentation](https://hub.meltano.com/taps/solarvista)"
+  image_url: /assets/images/datasource/tap-solarvista.png
+  variant: matatika
+  docs: https://www.matatika.com/docs/data-sources/tap-solarvista/
+  repo: https://github.com/Matatika/tap-solarvista
+  pip_url: git+https://github.com/Matatika/tap-solarvista@v0.3.1
+  capabilities:
+  - state
+  settings:
+  - name: datasources
+    kind: string
+    label: Datasources
+    protected: false
+  - name: account
+    kind: string
+    label: Account
+    protected: false
+  - name: clientId
+    kind: string
+    label: Client ID
+    protected: false
+  - name: code
+    kind: password
+    label: Code
+    protected: false
+  - name: start_date
+    kind: date_iso8601
+    label: Start Date
+    protected: false
 - name: tap-auth0
   namespace: tap_auth0
   hidden: false
@@ -278,18 +490,18 @@ extractors:
     ## Learn more
 
 
-    Learn more about the Auth0 data source:
+    [Matatika Auth0 Data Source Documentation](https://www.matatika.com/docs/data-sources/tap-auth0)
 
 
-    [Auth0 Data Source Documentation](https://www.matatika.com/docs/data-sources/tap-auth0)'
+    [Meltano Hub Auth0 Documentation](https://hub.meltano.com/taps/auth0)'
   image_url: /assets/images/datasource/tap-auth0.png
   variant: meltano
   repo: https://github.com/Matatika/tap-auth0
   pip_url: git+https://github.com/Matatika/tap-auth0@v0.3.1
   capabilities:
-  - state
-  - discover
   - catalog
+  - discover
+  - state
   settings:
   - name: client_id
     kind: password
@@ -315,58 +527,81 @@ extractors:
     label: Job_poll_max_count
     protected: false
     required: 'false'
-- name: tap-solarvista
-  namespace: tap_solarvista
+- name: tap-google-sheets
+  namespace: tap_google_sheets
   hidden: false
-  label: Solarvista Live
-  description: "Solarvista Live is a Field Service Management platform to manage,\
-    \ plan, and mobilise your engineers. \n\nThe Matatika Solarvista Live import will\
-    \ extract Solarvista data into your Matatika data store, giving you instant insights\
-    \ into revenue, projects, work items, and engineer performance.\n\n## Prerequisites\n\
-    \nBefore importing data from Solarvista Live you will need to have performed the\
-    \ initial setup in Solarvista.\n\n[Solarvista Live Prerequisites](https://www.matatika.com/docs/data-sources/tap-solarvista/prerequisites)\n\
-    \n\n## Data source settings\n\n### Account\n\nSolarvista API `account`\n\nTo get\
-    \ your `account` id you will need to follow the steps that are linked in our [Prerequisites](https://www.matatika.com/docs/data-sources/tap-solarvista/prerequisites)\
-    \ section.\n\n### ClientId\n\nSolarvista API `clientId`\n  \nTo get your `clientId`\
-    \ you will need to follow the steps that are linked in our [Prerequisites](https://www.matatika.com/docs/data-sources/tap-solarvista/prerequisites)\
-    \ section.\n  \n### Code\n  \nSolarvista API `code`\n  \nTo get your `code` you\
-    \ will need to follow the steps that are linked in our [Prerequisites](https://www.matatika.com/docs/data-sources/tap-solarvista/prerequisites)\
-    \ section.\n  \n### Datasources\n  \nLeave this field blank to accept the default\
-    \ Solarvista datasources or customise the type of data to sync, we support:\n\
-    - `customer`\n- `site`\n- `equipment`\n- `work-item`\n- `work-item-history`\n\
-    - `activity`\n- `users`\n- `territory`\n- `project`\n- `appointment`\n- `skill`\n\
-    \  \n  \n### Start Date\n  \nProviding a start date allows you to set how much\
-    \ historical data you wish to import into your workspace. \n  \nThis date has\
-    \ to be in the ISO-8601 date format, see the example below.\n  \nFormat: `YYYY-MM-DDTHH:MM:SSZ`\n\
-    Example: `2020-10-01T13:12:11Z`\n\n\n## Learn more\n\nLearn more about the Solarvista\
-    \ Live data source\n\n[Solavista Live Extractor Documentation](https://www.matatika.com/docs/data-sources/tap-solarvista)"
-  image_url: /assets/images/datasource/tap-solarvista.png
-  variant: matatika
-  docs: https://www.matatika.com/docs/data-sources/tap-solarvista/
-  repo: https://github.com/Matatika/tap-solarvista
-  pip_url: git+https://github.com/Matatika/tap-solarvista@v0.3.0
+  label: Google Sheets
+  description: 'Google Sheets is a web-based application that enables users to create,
+    update and modify spreadsheets and share the data online in real time.
+
+
+    ## Data source settings
+
+    ### Sheet ID
+
+
+    Once you have connected with your google account, the `Sheet ID` drop down will
+    allow you to choose which sheet you want to get your data from.
+
+
+    ## Learn more
+
+
+    [Matatika Google Sheets Data Source Documentation](https://www.matatika.com/docs/data-sources/tap-google-sheets)'
+  image_url: /assets/images/datasource/tap-google-sheets.png
+  variant: meltano
+  docs: https://www.matatika.com/docs/data-sources/tap-google-sheets/
+  repo: https://github.com/Matatika/tap-google-sheets
+  pip_url: git+https://github.com/Matatika/tap-google-sheets@v0.1.0
   capabilities:
+  - catalog
+  - discover
   - state
   settings:
-  - name: datasources
+  - name: oauth_credentials.authorization_url
+    kind: hidden
+    value: https://oauth2.googleapis.com/token
+    label: OAuth identity provider authorization endpoint used create and refresh
+      tokens
+    protected: false
+  - name: oauth_credentials.scope
+    kind: hidden
+    value: https://www.googleapis.com/auth/spreadsheets.readonly https://www.googleapis.com/auth/drive.readonly
+    label: OAuth scopes we need to request access to
+    protected: false
+  - name: oauth_credentials.access_token
+    kind: hidden
+    label: Access Token
+    protected: false
+  - name: oauth_credentials.refresh_token
+    kind: hidden
+    label: OAuth Refresh Token
+    protected: false
+  - name: oauth_credentials.refresh_proxy_url
+    kind: hidden
+    label: Optional - will be called with 'oauth_credentials.refresh_token' to refresh
+      the access token
+    protected: false
+    required: 'false'
+  - name: oauth_credentials.refresh_proxy_url_auth
+    kind: hidden
+    label: Optional - Sets Authorization header on 'oauth_credentials.refresh_url'
+      request
+    protected: false
+    required: 'false'
+  - name: oauth_credentials.client_id
+    kind: hidden
+    label: Optional - OAuth Client ID used if refresh_proxy_url not supplied
+    protected: false
+    required: 'false'
+  - name: oauth_credentials.client_secret
+    kind: hidden
+    label: Optional - OAuth Client Secret used if refresh_proxy_url not supplied
+    protected: false
+    required: 'false'
+  - name: sheet_id
     kind: string
-    label: Datasources
-    protected: false
-  - name: account
-    kind: string
-    label: Account
-    protected: false
-  - name: clientId
-    kind: string
-    label: Client ID
-    protected: false
-  - name: code
-    kind: password
-    label: Code
-    protected: false
-  - name: start_date
-    kind: date_iso8601
-    label: Start Date
+    label: Sheet ID
     protected: false
 - name: tap-spreadsheets-anywhere
   namespace: tap_spreadsheets_anywhere
@@ -385,16 +620,16 @@ extractors:
     \ of the file `GitFlixUsers.csv` into your datastore under the table name `gitflixusers`.\n\
     \n## Learn more\n\nThese documentation links contain an overview of how Spreadsheets\
     \ Anywhere works, its settings, capabilities, a list of all supported formats\
-    \ and some more examples.\n\n[Spreadsheets Anywhere GitHub Documentation](https://github.com/ets/tap-spreadsheets-anywhere/blob/master/README.md)\n\
-    \n[Spreadsheets Anywhere - Meltano Hub Documentation](https://hub.meltano.com/extractors/spreadsheets-anywhere)"
+    \ and some more examples.\n\n[Meltano Hub Spreadsheets Anywhere Documentation](https://hub.meltano.com/extractors/spreadsheets-anywhere)\n\
+    \n[Spreadsheets Anywhere GitHub Documentation](https://github.com/ets/tap-spreadsheets-anywhere/blob/master/README.md)"
   image_url: /assets/images/datasource/tap-spreadsheets-anywhere.png
   docs: https://meltano.com/plugins/extractors/spreadsheets-anywhere.html
   repo: https://github.com/ets/tap-spreadsheets-anywhere
   pip_url: git+https://github.com/ets/tap-spreadsheets-anywhere.git
   capabilities:
-  - state
-  - discover
   - catalog
+  - discover
+  - state
   settings:
   - name: tables
     kind: array
@@ -426,17 +661,17 @@ extractors:
     \ may also break the dbt transforms that are required to have our included datasets\
     \ work.\nFor more information on how to define a custom reports file see the [Meltano\
     \ Hub Documentation](https://hub.meltano.com/extractors/google-analytics#reports).\n\
-    \n## Learn more\n\nLearn more about the Google Analytics data source\n\n[Google\
-    \ Analytics Extractor Documentation](https://hub.meltano.com/extractors/google-analytics)"
+    \n## Learn more\n\n[Matatika Google Analytics Data Source Documentation](https://www.matatika.com/docs/data-sources/tap-google-analytics)\n\
+    \n[Meltano Hub Google Analytics Documentation](https://hub.meltano.com/extractors/google-analytics)"
   image_url: /assets/images/datasource/tap-google-analytics.svg
   variant: meltano
   docs: https://www.matatika.com/docs/data-sources/tap-google-analytics/
   repo: https://github.com/Matatika/tap-google-analytics
   pip_url: git+https://github.com/Matatika/tap-google-analytics@v0.3.0
   capabilities:
-  - state
-  - discover
   - catalog
+  - discover
+  - state
   settings:
   - name: oauth_credentials.authorization_url
     kind: hidden
@@ -688,7 +923,7 @@ loaders:
     value_post_processor: stringify
     required: 'false'
   - name: batch_size_rows
-    kind: hidden
+    kind: integer
     value: 100000
     label: Batch Size Rows
     description: Maximum number of rows in each batch. At the end of each batch, the
@@ -787,8 +1022,8 @@ loaders:
     protected: false
     required: 'false'
   - name: primary_key_required
-    kind: hidden
-    value: 'true'
+    kind: boolean
+    value: 'false'
     label: Primary Key Required
     description: Log based and Incremental replications on tables with no Primary
       Key cause duplicates when merging UPDATE events. When set to true, stop loading
@@ -796,7 +1031,7 @@ loaders:
     protected: false
     required: 'false'
   - name: validate_records
-    kind: hidden
+    kind: boolean
     value: 'false'
     label: Validate Records
     description: Validate every single record message to the corresponding JSON schema.
@@ -883,7 +1118,7 @@ loaders:
   variant: meltano
   docs: https://hub.meltano.com/loaders/snowflake--meltano.html
   repo: https://github.com/Matatika/target-snowflake
-  pip_url: git+https://github.com/Matatika/target-snowflake@v0.1.0
+  pip_url: git+https://github.com/Matatika/target-snowflake@v0.1.1
   settings:
   - name: account
     kind: string
@@ -972,6 +1207,15 @@ transforms:
   variant: meltano
   repo: https://github.com/Matatika/dbt-tap-meltano
   pip_url: https://github.com/Matatika/dbt-tap-meltano@v0.3.0
+- name: dbt-spotify
+  namespace: tap_spotify
+  hidden: false
+  label: Dbt Spotify
+  vars:
+    schema: '{{ env_var(''DBT_SOURCE_SCHEMA'') }}'
+  variant: spotify
+  repo: https://github.com/Matatika/dbt-tap-spotify
+  pip_url: https://github.com/Matatika/dbt-tap-spotify@v0.3.0
 - name: dbt-tap-trello
   namespace: tap_trello
   hidden: false
@@ -1038,7 +1282,7 @@ files:
   label: Analyze Trello
   update:
     analyze/datasets/tap-trello: 'true'
-  pip_url: git+https://github.com/Matatika/analyze-trello@v0.4.0
+  pip_url: git+https://github.com/Matatika/analyze-trello@v0.4.1
 - name: dbt
   namespace: dbt
   hidden: false
@@ -1078,7 +1322,15 @@ files:
   update:
     analyze/datasets/tap-googleads: 'true'
   repo: https://github.com/Matatika/analyze-googleads
-  pip_url: git+https://github.com/Matatika/analyze-googleads@v0.4.0
+  pip_url: git+https://github.com/Matatika/analyze-googleads@v0.4.1
+- name: analyze-spotify
+  namespace: tap_spotify
+  hidden: false
+  label: Analyze Spotify
+  update:
+    analyze/datasets/tap-spotify: 'true'
+  repo: https://github.com/Matatika/analyze-spotify
+  pip_url: git+https://github.com/Matatika/analyze-spotify@v0.4.0
 - name: analyze-solarvista
   namespace: tap_solarvista
   hidden: false
@@ -1086,7 +1338,15 @@ files:
   update:
     analyze/datasets: 'true'
   repo: https://github.com/Matatika/analyze-solarvista
-  pip_url: git+https://github.com/Matatika/analyze-solarvista@v0.4.0
+  pip_url: git+https://github.com/Matatika/analyze-solarvista@v0.4.1
+- name: analyze-shopify
+  namespace: tap_shopify
+  hidden: false
+  label: Analyze Shopify
+  update:
+    analyze/datasets: 'true'
+  repo: https://github.com/Matatika/analyze-shopify
+  pip_url: git+https://github.com/Matatika/analyze-shopify
 - name: analyze-meltano
   namespace: tap_meltano
   hidden: false
