@@ -1,20 +1,20 @@
-version: 19
+version: 20
 extractors:
 - name: tap-matatika-sit
   namespace: tap_matatika_sit
   hidden: false
   label: Matatika SIT
+  logo_url: /assets/images/datasource/tap-matatika-sit.svg
   description: Test extractor based on tap-spreadsheets-anywhere used during Matatika
     SIT runs
-  image_url: /assets/images/datasource/tap-matatika-sit.svg
   docs: https://meltano.com/plugins/extractors/spreadsheets-anywhere.html
   repo: https://github.com/ets/tap-spreadsheets-anywhere
   pip_url: git+https://github.com/ets/tap-spreadsheets-anywhere.git
   executable: tap-spreadsheets-anywhere
   capabilities:
+  - state
   - catalog
   - discover
-  - state
   settings:
   - name: tables
     kind: array
@@ -27,6 +27,7 @@ extractors:
   namespace: tap_googleads
   hidden: false
   label: Google Ads
+  logo_url: /assets/images/datasource/tap-googleads.svg
   description: 'App and website ads platform hosted by Google.
 
 
@@ -96,14 +97,13 @@ extractors:
 
 
     [Meltano Hub Google Ads Documentation](https://hub.meltano.com/taps/googleads)'
-  image_url: /assets/images/datasource/tap-googleads.svg
   docs: https://www.matatika.com/docs/data-sources/tap-googleads/
   repo: https://github.com/Matatika/tap-googleads
   pip_url: git+https://github.com/Matatika/tap-googleads@v0.3.1
   capabilities:
+  - state
   - catalog
   - discover
-  - state
   settings:
   - name: oauth_credentials.authorization_url
     kind: hidden
@@ -168,6 +168,7 @@ extractors:
   namespace: tap_shopify
   hidden: false
   label: Shopify
+  logo_url: /assets/images/datasource/tap-shopify.png
   description: "E-commerce platform for online stores and retail point-of-sale systems.\n\
     \n## Prerequisites\n\nBefore importing data from Shopify, you or your store admin\
     \ may need to perform some\ninitial setup to grant read access.\n\n[Prerequisites](https://www.matatika.com/docs/data-sources/tap-shopify/prerequisites)\n\
@@ -176,12 +177,12 @@ extractors:
     \ prefix of your admin url.\n\ne.g. https://<your store id>.myshopify.com/admin\n\
     \n\n### Start Date\n\nProvide a start date to control the amount of historical\
     \ data. \n\nFormat: `YYYY-MM-DDTHH:MM:SSZ`\nExample: `2020-10-01T13:12:11Z`\n\n\
-    \n## Learn more\n\nLearn more about the Shopify data source\n\n[Extractor Documentation](https://www.matatika.com/docs/data-sources/tap-shopify)"
-  image_url: /assets/images/datasource/tap-shopify.png
+    \n## Learn more\n\nLearn more about the Shopify data source\n\n[Matatika Shopify\
+    \ Data Source Documentation](https://www.matatika.com/docs/data-sources/tap-shopify)"
   variant: matatika
   docs: https://www.matatika.com/docs/data-sources/tap-shopify/
   repo: https://github.com/Matatika/tap-shopify
-  pip_url: git+https://github.com/Matatika/tap-shopify
+  pip_url: git+https://github.com/Matatika/tap-shopify@v0.1.0
   capabilities:
   - state
   settings:
@@ -202,6 +203,7 @@ extractors:
   namespace: tap_meltano
   hidden: false
   label: Meltano
+  logo_url: /assets/images/datasource/tap-meltano.png
   description: 'Meltano is a data pipeline and modular open source data ops platform.
 
 
@@ -239,14 +241,13 @@ extractors:
 
 
     [Meltano Hub Meltano Documentation](https://hub.meltano.com/taps/meltano)'
-  image_url: /assets/images/datasource/tap-meltano.png
   docs: https://www.matatika.com/docs/data-sources/tap-meltano/
   repo: https://github.com/Matatika/tap-meltano
   pip_url: git+https://github.com/Matatika/tap-meltano@v0.3.0
   capabilities:
+  - state
   - catalog
   - discover
-  - state
   settings:
   - name: meltano_database_uri
     kind: password
@@ -258,6 +259,7 @@ extractors:
   namespace: tap_spotify
   hidden: false
   label: Spotify
+  logo_url: /assets/images/datasource/tap-spotify.png
   description: 'Spotify is a digital music streaming service.
 
 
@@ -299,14 +301,14 @@ extractors:
 
 
     [Meltano Hub Spotify Documentation](https://hub.meltano.com/taps/spotify)'
-  image_url: /assets/images/datasource/tap-spotify.png
+  variant: matatika
   docs: https://www.matatika.com/docs/data-sources/tap-spotify/
   repo: https://github.com/Matatika/tap-spotify
   pip_url: git+https://github.com/Matatika/tap-spotify@v0.3.0
   capabilities:
+  - state
   - catalog
   - discover
-  - state
   settings:
   - name: client_id
     kind: password
@@ -327,6 +329,7 @@ extractors:
   namespace: tap_trello
   hidden: false
   label: Trello
+  logo_url: /assets/images/datasource/tap-trello.png
   description: 'Trello is a collaboration tool that organizes your projects into boards.
 
 
@@ -375,14 +378,13 @@ extractors:
 
 
     [Meltano Hub Trello Documentation](https://hub.meltano.com/taps/trello--matatika)'
-  image_url: /assets/images/datasource/tap-trello.png
   variant: meltano
   repo: https://github.com/Matatika/tap-trello
   pip_url: git+https://github.com/Matatika/tap-trello@v0.3.0
   capabilities:
+  - state
   - catalog
   - discover
-  - state
   settings:
   - name: developer_api_key
     kind: password
@@ -397,64 +399,11 @@ extractors:
     label: Start_date
     protected: false
     required: 'False'
-- name: tap-solarvista
-  namespace: tap_solarvista
-  hidden: false
-  label: Solarvista Live
-  description: "Solarvista Live is a Field Service Management platform to manage,\
-    \ plan, and mobilise your engineers. \n\nThe Matatika Solarvista Live import will\
-    \ extract Solarvista data into your Matatika data store, giving you instant insights\
-    \ into revenue, projects, work items, and engineer performance.\n\n## Prerequisites\n\
-    \nBefore importing data from Solarvista Live you will need to have performed the\
-    \ initial setup in Solarvista.\n\n[Solarvista Live Prerequisites](https://www.matatika.com/docs/data-sources/tap-solarvista/prerequisites)\n\
-    \n\n## Data source settings\n\n### Account\n\nSolarvista API `account`\n\nTo get\
-    \ your `account` id you will need to follow the steps that are linked in our [Prerequisites](https://www.matatika.com/docs/data-sources/tap-solarvista/prerequisites)\
-    \ section.\n\n### ClientId\n\nSolarvista API `clientId`\n  \nTo get your `clientId`\
-    \ you will need to follow the steps that are linked in our [Prerequisites](https://www.matatika.com/docs/data-sources/tap-solarvista/prerequisites)\
-    \ section.\n  \n### Code\n  \nSolarvista API `code`\n  \nTo get your `code` you\
-    \ will need to follow the steps that are linked in our [Prerequisites](https://www.matatika.com/docs/data-sources/tap-solarvista/prerequisites)\
-    \ section.\n  \n### Datasources\n  \nLeave this field blank to accept the default\
-    \ Solarvista datasources or customise the type of data to sync, we support:\n\
-    - `customer`\n- `site`\n- `equipment`\n- `work-item`\n- `work-item-history`\n\
-    - `activity`\n- `users`\n- `territory`\n- `project`\n- `appointment`\n- `skill`\n\
-    \  \n  \n### Start Date\n  \nProviding a start date allows you to set how much\
-    \ historical data you wish to import into your workspace. \n  \nThis date has\
-    \ to be in the ISO-8601 date format, see the example below.\n  \nFormat: `YYYY-MM-DDTHH:MM:SSZ`\n\
-    Example: `2020-10-01T13:12:11Z`\n\n\n## Learn more\n\n[Matatika Solavista Live\
-    \ Data Source Documentation](https://www.matatika.com/docs/data-sources/tap-solarvista)\n\
-    \n[Meltano Hub Solarvista Live Documentation](https://hub.meltano.com/taps/solarvista)"
-  image_url: /assets/images/datasource/tap-solarvista.png
-  variant: matatika
-  docs: https://www.matatika.com/docs/data-sources/tap-solarvista/
-  repo: https://github.com/Matatika/tap-solarvista
-  pip_url: git+https://github.com/Matatika/tap-solarvista@v0.3.1
-  capabilities:
-  - state
-  settings:
-  - name: datasources
-    kind: string
-    label: Datasources
-    protected: false
-  - name: account
-    kind: string
-    label: Account
-    protected: false
-  - name: clientId
-    kind: string
-    label: Client ID
-    protected: false
-  - name: code
-    kind: password
-    label: Code
-    protected: false
-  - name: start_date
-    kind: date_iso8601
-    label: Start Date
-    protected: false
 - name: tap-auth0
   namespace: tap_auth0
   hidden: false
   label: Auth0
+  logo_url: /assets/images/datasource/tap-auth0.png
   description: 'Auth0 is an identity and access management service, that allows you
     to manage the access of your users.
 
@@ -494,14 +443,13 @@ extractors:
 
 
     [Meltano Hub Auth0 Documentation](https://hub.meltano.com/taps/auth0)'
-  image_url: /assets/images/datasource/tap-auth0.png
   variant: meltano
   repo: https://github.com/Matatika/tap-auth0
   pip_url: git+https://github.com/Matatika/tap-auth0@v0.3.1
   capabilities:
+  - state
   - catalog
   - discover
-  - state
   settings:
   - name: client_id
     kind: password
@@ -527,36 +475,104 @@ extractors:
     label: Job_poll_max_count
     protected: false
     required: 'false'
+- name: tap-solarvista
+  namespace: tap_solarvista
+  hidden: false
+  label: Solarvista Live
+  logo_url: /assets/images/datasource/tap-solarvista.png
+  description: "Solarvista Live is a Field Service Management platform to manage,\
+    \ plan, and mobilise your engineers. \n\nThe Matatika Solarvista Live import will\
+    \ extract Solarvista data into your Matatika data store, giving you instant insights\
+    \ into revenue, projects, work items, and engineer performance.\n\n## Prerequisites\n\
+    \nBefore importing data from Solarvista Live you will need to have performed the\
+    \ initial setup in Solarvista.\n\n[Solarvista Live Prerequisites](https://www.matatika.com/docs/data-sources/tap-solarvista/prerequisites)\n\
+    \n\n## Data source settings\n\n### Account\n\nSolarvista API `account`\n\nTo get\
+    \ your `account` id you will need to follow the steps that are linked in our [Prerequisites](https://www.matatika.com/docs/data-sources/tap-solarvista/prerequisites)\
+    \ section.\n\n### ClientId\n\nSolarvista API `clientId`\n  \nTo get your `clientId`\
+    \ you will need to follow the steps that are linked in our [Prerequisites](https://www.matatika.com/docs/data-sources/tap-solarvista/prerequisites)\
+    \ section.\n  \n### Code\n  \nSolarvista API `code`\n  \nTo get your `code` you\
+    \ will need to follow the steps that are linked in our [Prerequisites](https://www.matatika.com/docs/data-sources/tap-solarvista/prerequisites)\
+    \ section.\n  \n### Datasources\n  \nLeave this field blank to accept the default\
+    \ Solarvista datasources or customise the type of data to sync, we support:\n\
+    - `customer`\n- `site`\n- `equipment`\n- `work-item`\n- `work-item-history`\n\
+    - `activity`\n- `users`\n- `territory`\n- `project`\n- `appointment`\n- `skill`\n\
+    \  \n  \n### Start Date\n  \nProviding a start date allows you to set how much\
+    \ historical data you wish to import into your workspace. \n  \nThis date has\
+    \ to be in the ISO-8601 date format, see the example below.\n  \nFormat: `YYYY-MM-DDTHH:MM:SSZ`\n\
+    Example: `2020-10-01T13:12:11Z`\n\n\n## Learn more\n\n[Matatika Solavista Live\
+    \ Data Source Documentation](https://www.matatika.com/docs/data-sources/tap-solarvista)\n\
+    \n[Meltano Hub Solarvista Live Documentation](https://hub.meltano.com/taps/solarvista)"
+  variant: matatika
+  docs: https://www.matatika.com/docs/data-sources/tap-solarvista/
+  repo: https://github.com/Matatika/tap-solarvista
+  pip_url: git+https://github.com/Matatika/tap-solarvista@v0.3.1
+  capabilities:
+  - state
+  settings:
+  - name: datasources
+    kind: string
+    label: Datasources
+    protected: false
+  - name: account
+    kind: string
+    label: Account
+    protected: false
+  - name: clientId
+    kind: string
+    label: Client ID
+    protected: false
+  - name: code
+    kind: password
+    label: Code
+    protected: false
+  - name: start_date
+    kind: date_iso8601
+    label: Start Date
+    protected: false
 - name: tap-google-sheets
   namespace: tap_google_sheets
   hidden: false
   label: Google Sheets
+  logo_url: /assets/images/datasource/tap-google-sheets.png
   description: 'Google Sheets is a web-based application that enables users to create,
     update and modify spreadsheets and share the data online in real time.
 
 
     ## Data source settings
 
-    ### Sheet ID
+    ### Sheet ID - `Required`
 
 
     Once you have connected with your google account, the `Sheet ID` drop down will
     allow you to choose which sheet you want to get your data from.
 
 
+    ### Stream Name - `Optional`
+
+
+    Set the stream name to control the table or file name output by the target. By
+    default this will be the file name of your Google Sheet.
+
+
+    ### Child Sheet Name - `Optional`
+
+
+    Pick a different sheet within your Google Sheet to sync data from. By default
+    we sync data from the first visible sheet in your Google Sheet.
+
+
     ## Learn more
 
 
     [Matatika Google Sheets Data Source Documentation](https://www.matatika.com/docs/data-sources/tap-google-sheets)'
-  image_url: /assets/images/datasource/tap-google-sheets.png
   variant: meltano
   docs: https://www.matatika.com/docs/data-sources/tap-google-sheets/
   repo: https://github.com/Matatika/tap-google-sheets
-  pip_url: git+https://github.com/Matatika/tap-google-sheets@v0.1.0
+  pip_url: git+https://github.com/Matatika/tap-google-sheets@v0.2.0
   capabilities:
+  - state
   - catalog
   - discover
-  - state
   settings:
   - name: oauth_credentials.authorization_url
     kind: hidden
@@ -603,10 +619,21 @@ extractors:
     kind: string
     label: Sheet ID
     protected: false
+  - name: stream_name
+    kind: string
+    label: Stream Name (Optional)
+    protected: false
+    required: 'false'
+  - name: child_sheet_name
+    kind: string
+    label: Child Sheet Name (Optional)
+    protected: false
+    required: 'false'
 - name: tap-spreadsheets-anywhere
   namespace: tap_spreadsheets_anywhere
   hidden: false
   label: Spreadsheets Anywhere
+  logo_url: /assets/images/datasource/tap-spreadsheets-anywhere.png
   description: "Spreadsheets anywhere allows you to read data from spreadsheets (CSVs,\
     \ Excel, JSON) from cloud or local storage.\n\n## Data source settings\n\n###\
     \ Files\n\nFiles takes JSON objects inside an Array to describe one or more target\
@@ -622,14 +649,13 @@ extractors:
     \ Anywhere works, its settings, capabilities, a list of all supported formats\
     \ and some more examples.\n\n[Meltano Hub Spreadsheets Anywhere Documentation](https://hub.meltano.com/extractors/spreadsheets-anywhere)\n\
     \n[Spreadsheets Anywhere GitHub Documentation](https://github.com/ets/tap-spreadsheets-anywhere/blob/master/README.md)"
-  image_url: /assets/images/datasource/tap-spreadsheets-anywhere.png
   docs: https://meltano.com/plugins/extractors/spreadsheets-anywhere.html
   repo: https://github.com/ets/tap-spreadsheets-anywhere
   pip_url: git+https://github.com/ets/tap-spreadsheets-anywhere.git
   capabilities:
+  - state
   - catalog
   - discover
-  - state
   settings:
   - name: tables
     kind: array
@@ -641,6 +667,7 @@ extractors:
   namespace: tap_google_analytics
   hidden: false
   label: Google Analytics
+  logo_url: /assets/images/datasource/tap-google-analytics.svg
   description: "App and website analytics platform hosted by Google\n\n## Prerequisites\n\
     \nBefore importing data from Google Analytics you or your webmaster will need\
     \ to have performed some initial setup to grant\nyourself access to the Google\
@@ -663,15 +690,14 @@ extractors:
     \ Hub Documentation](https://hub.meltano.com/extractors/google-analytics#reports).\n\
     \n## Learn more\n\n[Matatika Google Analytics Data Source Documentation](https://www.matatika.com/docs/data-sources/tap-google-analytics)\n\
     \n[Meltano Hub Google Analytics Documentation](https://hub.meltano.com/extractors/google-analytics)"
-  image_url: /assets/images/datasource/tap-google-analytics.svg
   variant: meltano
   docs: https://www.matatika.com/docs/data-sources/tap-google-analytics/
   repo: https://github.com/Matatika/tap-google-analytics
   pip_url: git+https://github.com/Matatika/tap-google-analytics@v0.3.0
   capabilities:
+  - state
   - catalog
   - discover
-  - state
   settings:
   - name: oauth_credentials.authorization_url
     kind: hidden
@@ -739,6 +765,7 @@ loaders:
   namespace: postgres
   hidden: false
   label: PostgreSQL
+  logo_url: /assets/images/datastore/target-postgres.png
   description: 'PostgreSQL Data Warehouse
 
 
@@ -779,7 +806,6 @@ loaders:
     ### Schema
 
     Name of the schema where tables will be created (no database prefix)'
-  image_url: /assets/images/datastore/target-postgres.png
   variant: meltano
   docs: https://hub.meltano.com/loaders/postgres--meltano.html
   repo: https://github.com/Matatika/target-postgres
@@ -829,6 +855,7 @@ loaders:
   namespace: postgres_transferwise
   hidden: false
   label: PostgreSQL
+  logo_url: /assets/images/datastore/target-postgres.png
   description: 'PostgreSQL Data Warehouse
 
 
@@ -870,7 +897,6 @@ loaders:
     ### Default Target Schema
 
     Name of the schema where tables will be created (no database prefix)'
-  image_url: /assets/images/datastore/target-postgres.png
   variant: transferwise
   docs: https://hub.meltano.com/loaders/postgres.html
   repo: https://github.com/transferwise/pipelinewise-target-postgres
@@ -1051,6 +1077,7 @@ loaders:
   namespace: snowflake
   hidden: false
   label: Snowflake
+  logo_url: /assets/images/datastore/target-snowflake.png
   description: 'Snowflake Data Warehouse
 
 
@@ -1114,7 +1141,6 @@ loaders:
 
     Name of the column used to store timestamps corresponding to when data was loaded
     into the table'
-  image_url: /assets/images/datastore/target-snowflake.png
   variant: meltano
   docs: https://hub.meltano.com/loaders/snowflake--meltano.html
   repo: https://github.com/Matatika/target-snowflake
@@ -1179,7 +1205,7 @@ transforms:
     schema: '{{ env_var(''DBT_SOURCE_SCHEMA'') }}'
   variant: meltano
   repo: https://github.com/Matatika/dbt-tap-google-analytics
-  pip_url: https://github.com/Matatika/dbt-tap-google-analytics@v0.3.0
+  pip_url: https://github.com/Matatika/dbt-tap-google-analytics@v0.4.0
 - name: dbt-googleads
   namespace: tap_googleads
   hidden: false
@@ -1188,16 +1214,7 @@ transforms:
     schema: '{{ env_var(''DBT_SOURCE_SCHEMA'') }}'
   variant: meltano
   repo: https://github.com/Matatika/dbt-tap-googleads
-  pip_url: https://github.com/Matatika/dbt-tap-googleads@v0.3.0
-- name: dbt-solarvista
-  namespace: tap_solarvista
-  hidden: false
-  label: Dbt Solarvista
-  vars:
-    schema: '{{ env_var(''DBT_SOURCE_SCHEMA'') }}'
-  variant: matatika
-  repo: https://github.com/Matatika/dbt-tap-solarvista
-  pip_url: https://github.com/Matatika/dbt-tap-solarvista@v0.3.0
+  pip_url: https://github.com/Matatika/dbt-tap-googleads@v0.4.0
 - name: dbt-meltano
   namespace: tap_meltano
   hidden: false
@@ -1206,7 +1223,16 @@ transforms:
     schema: '{{ env_var(''DBT_SOURCE_SCHEMA'') }}'
   variant: meltano
   repo: https://github.com/Matatika/dbt-tap-meltano
-  pip_url: https://github.com/Matatika/dbt-tap-meltano@v0.3.0
+  pip_url: https://github.com/Matatika/dbt-tap-meltano@v0.4.0
+- name: dbt-solarvista
+  namespace: tap_solarvista
+  hidden: false
+  label: Dbt Solarvista
+  vars:
+    schema: '{{ env_var(''DBT_SOURCE_SCHEMA'') }}'
+  variant: matatika
+  repo: https://github.com/Matatika/dbt-tap-solarvista
+  pip_url: https://github.com/Matatika/dbt-tap-solarvista@v0.4.0
 - name: dbt-spotify
   namespace: tap_spotify
   hidden: false
@@ -1215,66 +1241,82 @@ transforms:
     schema: '{{ env_var(''DBT_SOURCE_SCHEMA'') }}'
   variant: spotify
   repo: https://github.com/Matatika/dbt-tap-spotify
-  pip_url: https://github.com/Matatika/dbt-tap-spotify@v0.3.0
+  pip_url: https://github.com/Matatika/dbt-tap-spotify@v0.4.0
 - name: dbt-tap-trello
   namespace: tap_trello
   hidden: false
   label: Dbt Tap Trello
   vars:
     schema: '{{ env_var(''DBT_SOURCE_SCHEMA'') }}'
-  pip_url: https://github.com/Matatika/dbt-tap-trello@v0.3.0
-models:
-- name: model-google-analytics
-  namespace: tap_google_analytics
-  hidden: false
-  label: Model Google Analytics
-  variant: meltano
-  repo: https://gitlab.com/meltano/model-google-analytics
-  pip_url: git+https://gitlab.com/meltano/model-google-analytics.git
+  pip_url: https://github.com/Matatika/dbt-tap-trello@v0.4.0
 transformers:
 - name: dbt
   namespace: dbt
+  hidden: false
+  label: Dbt
+  logo_url: /assets/images/transformer/dbt.png
   docs: https://meltano.com/docs/transforms.html
   repo: https://github.com/dbt-labs/dbt-core
-  pip_url: dbt==0.20.2
+  pip_url: 'dbt-core~=1.0.0 dbt-postgres~=1.0.0 dbt-redshift~=1.0.0 dbt-snowflake~=1.0.0
+    dbt-bigquery~=1.0.0
+
+    '
   settings:
   - name: project_dir
+    kind: string
     value: $MELTANO_PROJECT_ROOT/transform
+    label: Project_dir
+    protected: false
   - name: profiles_dir
     env: DBT_PROFILES_DIR
+    kind: string
     value: $MELTANO_PROJECT_ROOT/transform/profile
+    label: Profiles_dir
+    protected: false
   - name: target
+    kind: string
     value: $MELTANO_LOAD__DIALECT
+    label: Target
+    protected: false
   - name: source_schema
+    kind: string
     value: $MELTANO_LOAD__TARGET_SCHEMA
+    label: Source_schema
+    protected: false
   - name: target_schema
+    kind: string
     value: analytics
+    label: Target_schema
+    protected: false
   - name: models
+    kind: string
     value: $MELTANO_TRANSFORM__PACKAGE_NAME $MELTANO_EXTRACTOR_NAMESPACE my_meltano_project
+    label: Models
+    protected: false
   commands:
-    clean:
-      args: clean
-      description: Delete all folders in the clean-targets list (usually the dbt_modules
-        and target directories.)
     compile:
-      args: compile --models $DBT_MODELS
+      args: compile
       description: Generates executable SQL from source model, test, and analysis
         files. Compiled SQL files are written to the target/ directory.
+    seed:
+      args: seed
+      description: Load data from csv files into your data warehouse.
+    test:
+      args: test
+      description: Runs tests on data in deployed models.
     deps:
       args: deps
       description: Pull the most recent version of the dependencies listed in packages.yml
     run:
-      args: run --models $DBT_MODELS
+      args: run
       description: Compile SQL and execute against the current target database.
-    seed:
-      args: seed
-      description: Load data from csv files into your data warehouse.
+    clean:
+      args: clean
+      description: Delete all folders in the clean-targets list (usually the dbt_modules
+        and target directories.)
     snapshot:
       args: snapshot
       description: Execute snapshots defined in your project.
-    test:
-      args: test
-      description: Runs tests on data in deployed models.
 files:
 - name: analyze-trello
   namespace: tap_trello
@@ -1282,15 +1324,7 @@ files:
   label: Analyze Trello
   update:
     analyze/datasets/tap-trello: 'true'
-  pip_url: git+https://github.com/Matatika/analyze-trello@v0.4.1
-- name: dbt
-  namespace: dbt
-  hidden: false
-  label: Dbt
-  update:
-    transform/profile/profiles.yml: 'true'
-  repo: https://github.com/Matatika/files-dbt
-  pip_url: git+https://github.com/Matatika/files-dbt@v0.20.x.1
+  pip_url: git+https://github.com/Matatika/analyze-trello@v0.5.0
 - name: analyze-google-analytics
   namespace: tap_google_analytics
   hidden: false
@@ -1322,15 +1356,30 @@ files:
   update:
     analyze/datasets/tap-googleads: 'true'
   repo: https://github.com/Matatika/analyze-googleads
-  pip_url: git+https://github.com/Matatika/analyze-googleads@v0.4.1
+  pip_url: git+https://github.com/Matatika/analyze-googleads@v0.5.0
 - name: analyze-spotify
   namespace: tap_spotify
   hidden: false
   label: Analyze Spotify
   update:
-    analyze/datasets/tap-spotify: 'true'
+    analyze/datasets/tap-spotify/export_global_viral_tracks_daily.yml: 'true'
+    analyze/datasets/tap-spotify/user_top_10_artists_long_term.yml: 'true'
+    analyze/datasets/tap-spotify/user_top_10_artists_medium_term.yml: 'true'
+    analyze/datasets/tap-spotify/count_of_all_genres_of_user_artists_long_term.yml: 'true'
+    analyze/datasets/tap-spotify/global_top_10_tracks_daily.yml: 'true'
+    analyze/datasets/tap-spotify/export_user_tracks_short_term.yml: 'true'
+    analyze/datasets/tap-spotify/count_of_artists_by_tracks_played_short_term.yml: 'true'
+    analyze/datasets/tap-spotify/global_top_10_viral_tracks_daily.yml: 'true'
+    analyze/datasets/tap-spotify/user_top_10_tracks_short_term.yml: 'true'
+    analyze/datasets/tap-spotify/export_global_tracks_daily.yml: 'true'
+    analyze/datasets/tap-spotify/export_global_tracks_weekly.yml: 'true'
+    analyze/datasets/tap-spotify/user_top_10_tracks_short_term_popularity.yml: 'true'
+    analyze/datasets/tap-spotify/global_top_10_tracks_weekly.yml: 'true'
+    analyze/datasets/tap-spotify/populatiry_of_top_25_user_tracks_compared_to_top_25_average_medium_term.yml: 'true'
+    analyze/datasets/tap-spotify/export_user_artists_short_term.yml: 'true'
+    analyze/datasets/tap-spotify/user_top_10_artists_short_term.yml: 'true'
   repo: https://github.com/Matatika/analyze-spotify
-  pip_url: git+https://github.com/Matatika/analyze-spotify@v0.4.0
+  pip_url: git+https://github.com/Matatika/analyze-spotify@v0.4.1
 - name: analyze-solarvista
   namespace: tap_solarvista
   hidden: false
@@ -1338,7 +1387,16 @@ files:
   update:
     analyze/datasets: 'true'
   repo: https://github.com/Matatika/analyze-solarvista
-  pip_url: git+https://github.com/Matatika/analyze-solarvista@v0.4.1
+  pip_url: git+https://github.com/Matatika/analyze-solarvista@v0.5.0
+- name: files-dbt
+  namespace: dbt
+  hidden: false
+  label: Files Dbt
+  logo_url: /assets/images/transformer/dbt.png
+  update:
+    transform/profile/profiles.yml: 'true'
+  repo: https://github.com/Matatika/files-dbt
+  pip_url: git+https://github.com/Matatika/files-dbt@v1.0.x.0
 - name: analyze-shopify
   namespace: tap_shopify
   hidden: false
@@ -1346,7 +1404,7 @@ files:
   update:
     analyze/datasets: 'true'
   repo: https://github.com/Matatika/analyze-shopify
-  pip_url: git+https://github.com/Matatika/analyze-shopify
+  pip_url: git+https://github.com/Matatika/analyze-shopify@v0.1.0
 - name: analyze-meltano
   namespace: tap_meltano
   hidden: false
@@ -1355,3 +1413,93 @@ files:
     analyze/datasets/tap-meltano: 'true'
   repo: https://github.com/Matatika/analyze-meltano
   pip_url: git+https://github.com/Matatika/analyze-meltano@v0.4.0
+utilities:
+- name: matatika
+  namespace: matatika-utils
+  hidden: false
+  label: Matatika
+  logo_url: /assets/images/utility/matatika.png
+  variant: matatika
+  pip_url: git+https://github.com/Matatika/utility-matatika.git
+  commands:
+    schedules:
+      args: schedules
+      description: Convert Meltano jobs and schedules into Matatika pipeline yamls.
+- name: sendgrid
+  namespace: sendgrid
+  hidden: false
+  label: Sendgrid
+  logo_url: /assets/images/utility/sendgrid.png
+  variant: sendgrid
+  pip_url: git+https://github.com/Matatika/utility-sendgrid.git
+  settings:
+  - name: to_addresses
+    env: SENDGRID_TO_ADDRESSES
+    kind: string
+    label: To Address(es)
+    protected: false
+  - name: from_address
+    env: SENDGRID_FROM_ADDRESS
+    kind: string
+    label: From Address
+    protected: false
+  - name: title
+    env: SENDGRID_TITLE
+    kind: string
+    label: Title
+    protected: false
+  - name: body
+    env: SENDGRID_BODY
+    kind: string
+    label: Body
+    protected: false
+  - name: attachments
+    env: SENDGRID_ATTACHMENTS
+    kind: string
+    label: Attachments
+    protected: false
+    required: 'false'
+  - name: api_key
+    env: SENDGRID_API_KEY
+    kind: password
+    label: API Key
+    protected: false
+  commands:
+    send:
+      args: ' '
+      description: Sends sendgrid email.
+- name: notebook
+  namespace: notebook
+  hidden: false
+  label: Notebook
+  logo_url: /assets/images/utility/notebook.png
+  variant: notebook
+  pip_url: git+https://github.com/Matatika/utility-notebook.git
+  settings:
+  - name: path
+    kind: string
+    label: Path
+    protected: false
+  - name: format
+    kind: string
+    label: Format
+    protected: false
+  - name: config
+    kind: string
+    label: Config
+    protected: false
+    required: 'false'
+  commands:
+    run-convert-config:
+      args: run $MELTANO_UTILIZE_PATH -f $MELTANO_UTILIZE_FORMAT -c $MELTANO_UTILIZE_CONFIG
+      description: Run and convert one/many notebooks to a selected format with a
+        config.
+    test:
+      args: meltano schedule list --format=json > text.json
+      description: Run one/many notebooks, saving their executed state.
+    convert:
+      args: convert $MELTANO_UTILIZE_PATH -f $MELTANO_UTILIZE_FORMAT
+      description: Convert one/many notebooks to a selected format.
+    run-convert:
+      args: run $MELTANO_UTILIZE_PATH -f $MELTANO_UTILIZE_FORMAT
+      description: Run and convert one/many notebooks to a selected format.
