@@ -9,6 +9,9 @@ plugins:
   - name: tap-auth0
     variant: meltano
     pip_url: git+https://github.com/Matatika/tap-auth0@v0.3.1
+    config:
+      job_poll_max_count: 20
+      job_poll_interval_ms: 5000
   - name: tap-shopify
     variant: matatika
     pip_url: git+https://github.com/Matatika/tap-shopify
@@ -26,8 +29,8 @@ plugins:
     pip_url: git+https://gitlab.com/meltano/model-google-analytics.git
   transformers:
   - name: dbt
-    pip_url: 'dbt-core~=1.0.0 dbt-postgres~=1.0.0 dbt-redshift~=1.0.0 dbt-snowflake~=1.0.0
-      dbt-bigquery~=1.0.0'
+    pip_url: dbt-core~=1.0.0 dbt-postgres~=1.0.0 dbt-redshift~=1.0.0 dbt-snowflake~=1.0.0
+      dbt-bigquery~=1.0.0
   files:
   - name: files-dbt
     pip_url: git+https://github.com/Matatika/files-dbt@v1.0.x.0
