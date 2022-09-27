@@ -37,6 +37,6 @@ plugins:
   - name: analyze-google-analytics
     pip_url: git+https://github.com/Matatika/analyze-google-analytics@v0.4.0
   - name: analyze-auth0
-    pip_url: git+https://github.com/Matatika/analyze-auth0@v0.4.1
+    pip_url: git+https://github.com/Matatika/analyze-auth0@v0.5.0
   - name: analyze-shopify
     pip_url: git+https://github.com/Matatika/analyze-shopify
