@@ -38,5 +38,11 @@ plugins:
     pip_url: git+https://github.com/Matatika/analyze-google-analytics@v0.4.0
   - name: analyze-auth0
     pip_url: git+https://github.com/Matatika/analyze-auth0@v0.5.0
+    update:
+      analyze/datasets/tap-auth0/auth0-daily-active-users.yml: true
+      analyze/datasets/tap-auth0/auth0-daily-machine-to-machine-usage.yml: true
+      analyze/datasets/tap-auth0/auth0-export-active-users.yml: true
+      analyze/datasets/tap-auth0/auth0-top-machine-to-machine-clients-by-usage.yml: true
+      analyze/datasets/tap-auth0/auth0-top-users-by-logins.yml: true
   - name: analyze-shopify
     pip_url: git+https://github.com/Matatika/analyze-shopify
