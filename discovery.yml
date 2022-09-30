@@ -7,14 +7,15 @@ extractors:
   logo_url: /assets/images/datasource/tap-matatika-sit.svg
   description: Test extractor based on tap-spreadsheets-anywhere used during Matatika
     SIT runs
+  variant: matatika
   docs: https://meltano.com/plugins/extractors/spreadsheets-anywhere.html
   repo: https://github.com/ets/tap-spreadsheets-anywhere
   pip_url: git+https://github.com/ets/tap-spreadsheets-anywhere.git
   executable: tap-spreadsheets-anywhere
   capabilities:
-  - state
-  - catalog
   - discover
+  - catalog
+  - state
   settings:
   - name: tables
     kind: array
@@ -97,13 +98,14 @@ extractors:
 
 
     [Meltano Hub Google Ads Documentation](https://hub.meltano.com/taps/googleads)'
+  variant: matatika
   docs: https://www.matatika.com/docs/data-sources/tap-googleads/
   repo: https://github.com/Matatika/tap-googleads
   pip_url: git+https://github.com/Matatika/tap-googleads@v0.3.1
   capabilities:
-  - state
-  - catalog
   - discover
+  - catalog
+  - state
   settings:
   - name: oauth_credentials.authorization_url
     kind: hidden
@@ -241,13 +243,14 @@ extractors:
 
 
     [Meltano Hub Meltano Documentation](https://hub.meltano.com/taps/meltano)'
+  variant: matatika
   docs: https://www.matatika.com/docs/data-sources/tap-meltano/
   repo: https://github.com/Matatika/tap-meltano
   pip_url: git+https://github.com/Matatika/tap-meltano@v0.3.0
   capabilities:
-  - state
-  - catalog
   - discover
+  - catalog
+  - state
   settings:
   - name: meltano_database_uri
     kind: password
@@ -306,9 +309,9 @@ extractors:
   repo: https://github.com/Matatika/tap-spotify
   pip_url: git+https://github.com/Matatika/tap-spotify@v0.3.0
   capabilities:
-  - state
-  - catalog
   - discover
+  - catalog
+  - state
   settings:
   - name: client_id
     kind: password
@@ -382,9 +385,9 @@ extractors:
   repo: https://github.com/Matatika/tap-trello
   pip_url: git+https://github.com/Matatika/tap-trello@v0.3.0
   capabilities:
-  - state
-  - catalog
   - discover
+  - catalog
+  - state
   settings:
   - name: developer_api_key
     kind: password
@@ -447,9 +450,9 @@ extractors:
   repo: https://github.com/Matatika/tap-auth0
   pip_url: git+https://github.com/Matatika/tap-auth0@v0.3.1
   capabilities:
-  - state
-  - catalog
   - discover
+  - catalog
+  - state
   settings:
   - name: client_id
     kind: password
@@ -570,9 +573,9 @@ extractors:
   repo: https://github.com/Matatika/tap-google-sheets
   pip_url: git+https://github.com/Matatika/tap-google-sheets@v0.2.0
   capabilities:
-  - state
-  - catalog
   - discover
+  - catalog
+  - state
   settings:
   - name: oauth_credentials.authorization_url
     kind: hidden
@@ -649,13 +652,14 @@ extractors:
     \ Anywhere works, its settings, capabilities, a list of all supported formats\
     \ and some more examples.\n\n[Meltano Hub Spreadsheets Anywhere Documentation](https://hub.meltano.com/extractors/spreadsheets-anywhere)\n\
     \n[Spreadsheets Anywhere GitHub Documentation](https://github.com/ets/tap-spreadsheets-anywhere/blob/master/README.md)"
+  variant: ets
   docs: https://meltano.com/plugins/extractors/spreadsheets-anywhere.html
   repo: https://github.com/ets/tap-spreadsheets-anywhere
   pip_url: git+https://github.com/ets/tap-spreadsheets-anywhere.git
   capabilities:
-  - state
-  - catalog
   - discover
+  - catalog
+  - state
   settings:
   - name: tables
     kind: array
@@ -695,9 +699,9 @@ extractors:
   repo: https://github.com/Matatika/tap-google-analytics
   pip_url: git+https://github.com/Matatika/tap-google-analytics@v0.3.0
   capabilities:
-  - state
-  - catalog
   - discover
+  - catalog
+  - state
   settings:
   - name: oauth_credentials.authorization_url
     kind: hidden
@@ -1248,6 +1252,7 @@ transforms:
   label: Dbt Tap Trello
   vars:
     schema: '{{ env_var(''DBT_SOURCE_SCHEMA'') }}'
+  variant: matatika
   pip_url: https://github.com/Matatika/dbt-tap-trello@v0.4.0
 transformers:
 - name: dbt
@@ -1255,6 +1260,7 @@ transformers:
   hidden: false
   label: Dbt
   logo_url: /assets/images/transformer/dbt.png
+  variant: dbt
   docs: https://meltano.com/docs/transforms.html
   repo: https://github.com/dbt-labs/dbt-core
   pip_url: 'dbt-core~=1.0.0 dbt-postgres~=1.0.0 dbt-redshift~=1.0.0 dbt-snowflake~=1.0.0
@@ -1324,6 +1330,7 @@ files:
   label: Analyze Trello
   update:
     analyze/datasets/tap-trello: 'true'
+  variant: matatika
   pip_url: git+https://github.com/Matatika/analyze-trello@v0.5.0
 - name: analyze-google-analytics
   namespace: tap_google_analytics
@@ -1331,6 +1338,7 @@ files:
   label: Analyze Google Analytics
   update:
     analyze/datasets: 'true'
+  variant: matatika
   repo: https://github.com/Matatika/analyze-google-analytics
   pip_url: git+https://github.com/Matatika/analyze-google-analytics@v0.4.0
 - name: analyze-auth0
@@ -1339,7 +1347,8 @@ files:
   label: Analyze Auth0
   update:
     analyze/datasets/tap-auth0: 'true'
-  pip_url: git+https://github.com/Matatika/analyze-auth0@v0.4.1
+  variant: matatika
+  pip_url: git+https://github.com/Matatika/analyze-auth0@v0.5.0
 - name: analyze-sit
   namespace: tap_matatika_sit
   hidden: false
@@ -1347,6 +1356,7 @@ files:
   update:
     analyze/datasets/tap-matatika-sit/user-ages.yml: 'true'
     analyze/datasets/tap-matatika-sit/user-genders.yml: 'true'
+  variant: matatika
   repo: https://github.com/Matatika/analyze-sit
   pip_url: git+https://github.com/Matatika/analyze-sit.git
 - name: analyze-googleads
@@ -1355,6 +1365,7 @@ files:
   label: Analyze Googleads
   update:
     analyze/datasets/tap-googleads: 'true'
+  variant: meltano
   repo: https://github.com/Matatika/analyze-googleads
   pip_url: git+https://github.com/Matatika/analyze-googleads@v0.5.0
 - name: analyze-spotify
@@ -1378,6 +1389,7 @@ files:
     analyze/datasets/tap-spotify/populatiry_of_top_25_user_tracks_compared_to_top_25_average_medium_term.yml: 'true'
     analyze/datasets/tap-spotify/export_user_artists_short_term.yml: 'true'
     analyze/datasets/tap-spotify/user_top_10_artists_short_term.yml: 'true'
+  variant: matatika
   repo: https://github.com/Matatika/analyze-spotify
   pip_url: git+https://github.com/Matatika/analyze-spotify@v0.4.1
 - name: analyze-solarvista
@@ -1386,6 +1398,7 @@ files:
   label: Analyze Solarvista
   update:
     analyze/datasets: 'true'
+  variant: matatika
   repo: https://github.com/Matatika/analyze-solarvista
   pip_url: git+https://github.com/Matatika/analyze-solarvista@v0.5.0
 - name: files-dbt
@@ -1395,6 +1408,7 @@ files:
   logo_url: /assets/images/transformer/dbt.png
   update:
     transform/profile/profiles.yml: 'true'
+  variant: dbt
   repo: https://github.com/Matatika/files-dbt
   pip_url: git+https://github.com/Matatika/files-dbt@v1.0.x.0
 - name: analyze-shopify
@@ -1403,6 +1417,7 @@ files:
   label: Analyze Shopify
   update:
     analyze/datasets: 'true'
+  variant: matatika
   repo: https://github.com/Matatika/analyze-shopify
   pip_url: git+https://github.com/Matatika/analyze-shopify@v0.1.0
 - name: analyze-meltano
@@ -1411,6 +1426,7 @@ files:
   label: Analyze Meltano
   update:
     analyze/datasets/tap-meltano: 'true'
+  variant: matatika
   repo: https://github.com/Matatika/analyze-meltano
   pip_url: git+https://github.com/Matatika/analyze-meltano@v0.4.0
 utilities:
