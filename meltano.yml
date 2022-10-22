@@ -23,10 +23,6 @@ plugins:
   - name: dbt-google-analytics
     variant: meltano
     pip_url: https://github.com/Matatika/dbt-tap-google-analytics@v0.3.0
-  models:
-  - name: model-google-analytics
-    variant: meltano
-    pip_url: git+https://gitlab.com/meltano/model-google-analytics.git
   transformers:
   - name: dbt
     pip_url: dbt-core~=1.0.0 dbt-postgres~=1.0.0 dbt-redshift~=1.0.0 dbt-snowflake~=1.0.0
