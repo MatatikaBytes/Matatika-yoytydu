@@ -1,4 +1,4 @@
-version: 20
+version: 21
 extractors:
 - name: tap-matatika-sit
   namespace: tap_matatika_sit
