@@ -1,0 +1,101 @@
+{
+  "plugin_type": "extractors",
+  "name": "tap-google-analytics",
+  "namespace": "tap_google_analytics",
+  "variant": "meltano",
+  "label": "Google Analytics",
+  "docs": "https://www.matatika.com/docs/data-sources/tap-google-analytics/",
+  "repo": "https://github.com/Matatika/tap-google-analytics",
+  "pip_url": "git+https://github.com/Matatika/tap-google-analytics@v0.3.0",
+  "capabilities": [
+    "catalog",
+    "discover",
+    "state"
+  ],
+  "settings": [
+    {
+      "name": "oauth_credentials.authorization_url",
+      "kind": "hidden",
+      "value": "https://oauth2.googleapis.com/token",
+      "label": "OAuth identity provider authorization endpoint used create and refresh tokens",
+      "protected": false
+    },
+    {
+      "name": "oauth_credentials.scope",
+      "kind": "hidden",
+      "value": "profile email https://www.googleapis.com/auth/analytics.readonly",
+      "label": "OAuth scopes we need to request access to",
+      "protected": false
+    },
+    {
+      "name": "oauth_credentials.access_token",
+      "kind": "hidden",
+      "label": "Access Token",
+      "protected": false
+    },
+    {
+      "name": "oauth_credentials.refresh_token",
+      "kind": "hidden",
+      "label": "OAuth Refresh Token",
+      "protected": false
+    },
+    {
+      "name": "oauth_credentials.refresh_proxy_url",
+      "kind": "hidden",
+      "label": "Optional - will be called with 'oauth_credentials.refresh_token' to refresh the access token",
+      "protected": false,
+      "required": "false"
+    },
+    {
+      "name": "oauth_credentials.refresh_proxy_url_auth",
+      "kind": "hidden",
+      "label": "Optional - Sets Authorization header on 'oauth_credentials.refresh_url' request",
+      "protected": false,
+      "required": "false"
+    },
+    {
+      "name": "oauth_credentials.client_id",
+      "kind": "hidden",
+      "label": "Optional - OAuth Client ID used if refresh_proxy_url not supplied",
+      "protected": false,
+      "required": "false"
+    },
+    {
+      "name": "oauth_credentials.client_secret",
+      "kind": "hidden",
+      "label": "Optional - OAuth Client Secret used if refresh_proxy_url not supplied",
+      "protected": false,
+      "required": "false"
+    },
+    {
+      "name": "view_id",
+      "kind": "string",
+      "label": "View ID",
+      "placeholder": "Ex. 198343027",
+      "protected": false
+    },
+    {
+      "name": "reports",
+      "kind": "string",
+      "label": "Reports",
+      "placeholder": "Ex. my_report_definition.json",
+      "protected": false,
+      "required": "false"
+    },
+    {
+      "name": "start_date",
+      "kind": "date_iso8601",
+      "label": "Start_date",
+      "protected": false
+    },
+    {
+      "name": "end_date",
+      "kind": "date_iso8601",
+      "label": "End_date",
+      "protected": false,
+      "required": "false"
+    }
+  ],
+  "id": "16af5f69-d2e0-402d-9c07-7c8ab36c5753",
+  "matatika_hidden": false
+}
