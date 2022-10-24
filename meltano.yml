@@ -19,7 +19,7 @@ plugins:
     variant: matatika
     pip_url: git+https://github.com/Matatika/tap-shopify
   loaders:
-  - name: target-postgres--transferwise
+  - name: target-postgres
     variant: transferwise
     pip_url: git+https://github.com/Matatika/pipelinewise-target-postgres@v0.1.0
   transforms:
