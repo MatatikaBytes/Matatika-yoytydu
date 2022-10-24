@@ -1,30 +1,30 @@
 name: my_meltano_project
-version: "1.0"
-require-dbt-version: [">=1.0.0", "<2.0.0"]
+version: '1.0'
+require-dbt-version: ['>=1.0.0', <2.0.0]
 profile: meltano
 config-version: 2
 model-paths:
-  - models
+- models
 analysis-paths:
-  - analysis
+- analysis
 test-paths:
-  - tests
+- tests
 seed-paths:
-  - data
+- data
 macro-paths:
-  - macros
+- macros
 snapshot-paths:
-  - snapshots
+- snapshots
 target-path: ../.meltano/transformers/dbt/target
 log-path: logs
 packages-install-path: dbt_packages
 clean-targets:
-  - ../.meltano/transformers/dbt/target
-  - dbt_packages
-  - logs
+- ../.meltano/transformers/dbt/target
+- dbt_packages
+- logs
 models:
-  my_meltano_project: null
+  my_meltano_project:
   tap_google_analytics: {}
 vars:
   tap_google_analytics:
-    schema: '{{ env_var(''DBT_SOURCE_SCHEMA'') }}'
+    schema: "{{ env_var('DBT_SOURCE_SCHEMA') }}"
