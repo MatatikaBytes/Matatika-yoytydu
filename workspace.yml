@@ -9,4 +9,3 @@ pipeline_paths:
   - pipelines
 plugin_paths:
   - plugins
-app_properties:
