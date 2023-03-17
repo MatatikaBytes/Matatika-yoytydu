@@ -25,6 +25,9 @@ plugins:
   - name: target-postgres--transferwise
     variant: transferwise
     pip_url: git+https://github.com/Matatika/pipelinewise-target-postgres@v0.1.0
+  - name: target-snowflake
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/target-snowflake@v0.1.1
   transforms:
   - name: dbt-google-analytics
     variant: meltano
