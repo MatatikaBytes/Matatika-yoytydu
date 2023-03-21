@@ -25,6 +25,9 @@ clean-targets:
 models:
   my_meltano_project:
   tap_google_analytics: {}
+  tap_github: {}
 vars:
   tap_google_analytics:
+    schema: "{{ env_var('DBT_SOURCE_SCHEMA') }}"
+  tap_github:
     schema: "{{ env_var('DBT_SOURCE_SCHEMA') }}"
