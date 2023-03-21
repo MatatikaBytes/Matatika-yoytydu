@@ -1,0 +1,36 @@
+{
+  "plugin_type": "extractors",
+  "name": "tap-shopify",
+  "namespace": "tap_shopify",
+  "variant": "matatika",
+  "label": "Shopify",
+  "docs": "https://www.matatika.com/docs/data-sources/tap-shopify/",
+  "repo": "https://github.com/Matatika/tap-shopify",
+  "pip_url": "git+https://github.com/Matatika/tap-shopify",
+  "description": "E-commerce platform for online stores and retail point-of-sale systems.\n\n## Prerequisites\n\nBefore importing data from Shopify, you or your store admin may need to perform some\ninitial setup to grant read access.\n\n[Prerequisites](https://www.matatika.com/docs/data-sources/tap-shopify/prerequisites)\n\n## Settings\n\n### Access Token\n\nThe access token to authenticate with the Shopify API.  See Prerequisites.\n\n\n### Store\n\nShopify store id, use the prefix of your admin url.\n\ne.g. https://<your store id>.myshopify.com/admin\n\n\n### Start Date\n\nProvide a start date to control the amount of historical data. \n\nFormat: `YYYY-MM-DDTHH:MM:SSZ`\nExample: `2020-10-01T13:12:11Z`\n\n\n## Learn more\n\nLearn more about the Shopify data source\n\n[Extractor Documentation](https://www.matatika.com/docs/data-sources/tap-shopify)",
+  "logo_url": "https://app.matatika.com/assets/images/datasource/tap-shopify.png",
+  "capabilities": [
+    "state"
+  ],
+  "settings": [
+    {
+      "name": "access_token",
+      "kind": "password",
+      "label": "Access Token",
+      "protected": false
+    },
+    {
+      "name": "store",
+      "kind": "string",
+      "label": "Store",
+      "protected": false
+    },
+    {
+      "name": "start_date",
+      "kind": "date_iso8601",
+      "label": "Start Date",
+      "protected": false,
+      "required": "false"
+    }
+  ]
+}
