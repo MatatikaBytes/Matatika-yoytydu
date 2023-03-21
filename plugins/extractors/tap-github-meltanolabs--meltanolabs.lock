@@ -3,6 +3,7 @@
   "name": "tap-github-meltanolabs",
   "namespace": "tap_github",
   "variant": "meltanolabs",
+  "executable": "tap-github",
   "label": "GitHub",
   "docs": "https://hub.meltano.com/extractors/tap-github--meltanolabs",
   "repo": "https://github.com/MeltanoLabs/tap-github",
