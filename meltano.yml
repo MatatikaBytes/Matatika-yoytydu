@@ -62,3 +62,6 @@ plugins:
   - name: analyze-github
     variant: matatika
     pip_url: git+https://github.com/Matatika/analyze-github@v0.1.0
+  - name: analyze-auth0
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/analyze-auth0@v0.5.0
