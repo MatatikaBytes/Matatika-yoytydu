@@ -1,6 +1,13 @@
 version: pipelines/v0.1
 name: GitHub
+schedule: 0 0 5 * * *
 timeout: 0
+script: |-
+  meltano install extractor tap-github-meltanolabs
+  meltano install loader target-postgres--transferwise
+  meltano install transformer dbt
+
+  meltano run tap-github-meltanolabs target-postgres--transferwise dbt:deps dbt:snapshot dbt:run
 data_components:
 - tap-github-meltanolabs
 - Default
