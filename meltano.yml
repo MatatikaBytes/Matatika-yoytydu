@@ -18,6 +18,9 @@ plugins:
   - name: tap-shopify
     variant: matatika
     pip_url: git+https://github.com/Matatika/tap-shopify
+  - name: tap-github
+    variant: matatika
+    pip_url: git+https://github.com/MeltanoLabs/tap-github.git
   loaders:
   - name: target-postgres
     variant: transferwise

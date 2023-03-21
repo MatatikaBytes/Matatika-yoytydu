@@ -1,0 +1,34 @@
+{
+  "plugin_type": "extractors",
+  "name": "tap-github",
+  "namespace": "tap_github",
+  "variant": "matatika",
+  "label": "GitHub",
+  "docs": "https://www.matatika.com/docs/data-sources/tap-github/",
+  "repo": "https://github.com/MeltanoLabs/tap-github",
+  "pip_url": "git+https://github.com/MeltanoLabs/tap-github.git",
+  "description": "GitHub is an online software development platform. It's used for storing, tracking, and collaborating on software projects.\n## Personal Access Token\nGithub token to authenticate with. This token will need to be a Github Classic `Personal Access Token` scoped with everything you need access to.\n\nThese scopes can range from being able to access public endpoints, for example for public repositories, to private repository and endpoint permissions.\n\nFor a quick start if you are syncing a public repository (like the default Repositories value) the only required scope is `public_repo`.\n\nFor help with this you can follow the Github [Creating a Classic Personal Access Token Docs](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-personal-access-token-classic)\n## Repositories\nAn array of strings containing the github repos to be included.\nExample: `[\"Matatika/matatika-ce\"]`\n## Learn more\n[Matatika GitHub Data Source Documentation](https://www.matatika.com/docs/data-sources/tap-github)\n[Meltano Hub GitHub Documentation](https://hub.meltano.com/extractors/tap-github/)",
+  "logo_url": "https://app.matatika.com/assets/images/datasource/tap-github.png",
+  "capabilities": [
+    "discover",
+    "state",
+    "catalog",
+    "about"
+  ],
+  "settings": [
+    {
+      "name": "auth_token",
+      "kind": "password",
+      "label": "Personal Access Token",
+      "protected": false,
+      "required": "true"
+    },
+    {
+      "name": "repositories",
+      "kind": "array",
+      "label": "Repositories",
+      "protected": false,
+      "required": "true"
+    }
+  ]
+}
