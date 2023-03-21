@@ -35,8 +35,15 @@ plugins:
   - name: dbt-google-analytics
     variant: meltano
     pip_url: https://github.com/Matatika/dbt-tap-google-analytics@v0.3.0
+  - name: dbt-github
+    variant: matatika
+    pip_url: https://github.com/Matatika/dbt-tap-github@v0.1.0
   transformers:
   - name: dbt
     variant: dbt
     pip_url: "dbt-core~=1.0.0 dbt-postgres~=1.0.0 dbt-redshift~=1.0.0 dbt-snowflake~=1.0.0\
       \ dbt-bigquery~=1.0.0\n"
+  files:
+  - name: analyze-github
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/analyze-github@v0.1.0
