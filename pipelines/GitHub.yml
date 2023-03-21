@@ -2,6 +2,6 @@ version: pipelines/v0.1
 name: GitHub
 timeout: 0
 data_components:
-- tap-github
+- tap-github-meltanolabs
 - Default
 - dbt
