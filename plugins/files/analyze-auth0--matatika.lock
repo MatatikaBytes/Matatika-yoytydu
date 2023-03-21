@@ -5,6 +5,8 @@
   "variant": "matatika",
   "label": "analyze-auth0",
   "pip_url": "git+https://github.com/Matatika/analyze-auth0@v0.5.0",
-  "id": "7e7df8b4-4550-421f-b6a4-417824890508",
-  "matatika_hidden": false
+  "matatika_hidden": false,
+  "update": {
+    "*.yml": "true"
+  }
 }
