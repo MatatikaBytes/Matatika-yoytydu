@@ -1,24 +1,24 @@
 version: datasets/v0.2
 source: tap-github
-title: Daily Total Open Pull Requests All Repositories
-questions: How many pull requests do we have open on any given day?
+title: Daily Open Issues All Repositories Last 90 Days
+questions: How many issues do we have open on any given day?
 description: |-
-  Daily number of open pull requests across all repositores.
+  Daily number of open issues across all repositores.
 
   #github
-  #pull_requests
+  #issues
 metadata: |-
   {
     "name": "gdrh",
-    "label": "Daily Total Open Pull Requests All Repositories", 
+    "label": "Daily Total Open Issues All Repositories", 
     "related_table": {
       "columns": [
         {"name": "date", "label": "Date", "description": "Date"}
       ],
       "aggregates": [
-        {"name": "prs", "label": "Open Pull Requests", "description": "Open Pull Requests", 
+        {"name": "issues", "label": "Open Issues", "description": "Open Issues", 
           "links": [
-            {"dataset": "tap-github/github-export-all-prs"}
+            {"dataset": "tap-github/github-export-all-issues"}
           ]
         }
       ]
@@ -39,9 +39,8 @@ visualisation: |-
 query: |-
   SELECT 
     date_day "gdrh.date"
-    , COALESCE(SUM(open_pull_requests), 0) "gdrh.prs"
+    , COALESCE(SUM(open_issues_count), 0) "gdrh.issues"
   FROM github_dim_repositories_history gdrh
-  WHERE date_day >= current_date - interval '90 days'
-  AND date_day != current_date
+  WHERE date_day > current_date - interval '90 days'
   GROUP BY date_day
   ORDER BY date_day asc
