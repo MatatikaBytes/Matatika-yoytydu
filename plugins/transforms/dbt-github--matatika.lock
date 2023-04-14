@@ -5,7 +5,7 @@
   "variant": "matatika",
   "label": "dbt-github",
   "repo": "https://github.com/Matatika/dbt-tap-github",
-  "pip_url": "https://github.com/Matatika/dbt-tap-github@v0.1.0",
+  "pip_url": "https://github.com/Matatika/dbt-tap-github",
   "vars": {
     "schema": "{{ env_var('DBT_SOURCE_SCHEMA') }}"
   }
