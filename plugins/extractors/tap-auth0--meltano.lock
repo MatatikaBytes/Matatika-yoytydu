@@ -34,17 +34,17 @@
     },
     {
       "name": "job_poll_interval_ms",
-      "kind": "hidden",
+      "kind": "integer",
       "value": 2000,
-      "label": "Job_poll_interval_ms",
+      "label": "Job poll interval (ms)",
       "protected": false,
       "required": "false"
     },
     {
       "name": "job_poll_max_count",
-      "kind": "hidden",
+      "kind": "integer",
       "value": 10,
-      "label": "Job_poll_max_count",
+      "label": "Job poll max count",
       "protected": false,
       "required": "false"
     }
