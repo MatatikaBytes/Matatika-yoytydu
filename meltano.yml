@@ -52,7 +52,7 @@ plugins:
     pip_url: https://github.com/Matatika/dbt-tap-google-analytics@v0.3.0
   - name: dbt-github
     variant: matatika
-    pip_url: https://github.com/Matatika/dbt-tap-github
+    pip_url: https://github.com/Matatika/dbt-tap-github@v0.2.0
   transformers:
   - name: dbt
     variant: dbt
@@ -61,7 +61,7 @@ plugins:
   files:
   - name: analyze-github
     variant: matatika
-    pip_url: git+https://github.com/Matatika/analyze-github@v0.1.0
+    pip_url: git+https://github.com/Matatika/analyze-github@v0.2.0
   - name: analyze-auth0
     variant: matatika
     pip_url: git+https://github.com/Matatika/analyze-auth0@v0.5.0
