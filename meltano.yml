@@ -36,6 +36,9 @@ plugins:
     - repositories.*
     - pull_requests.*
     - commits.*
+  - name: tap-googleads
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/tap-googleads@v0.3.3
   loaders:
   - name: target-postgres
     variant: transferwise

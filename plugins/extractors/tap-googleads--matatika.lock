@@ -1,0 +1,100 @@
+{
+  "plugin_type": "extractors",
+  "name": "tap-googleads",
+  "namespace": "tap_googleads",
+  "variant": "matatika",
+  "label": "Google Ads",
+  "docs": "https://www.matatika.com/docs/data-sources/tap-googleads/",
+  "repo": "https://github.com/Matatika/tap-googleads",
+  "pip_url": "git+https://github.com/Matatika/tap-googleads@v0.3.3",
+  "description": "App and website ads platform hosted by Google.\n\n## Prerequisites\n\n[Google Ads Prerequisites](https://www.matatika.com/docs/data-sources/tap-googleads/prerequisites)\n\n## Data source settings\n\n### Customer Id\n\nCustomer Id is the account id of your Google Ads account with the ads campaigns, and therefore data, that will get synced.\n\nYour Customer Id is usually in the format '111-111-1111' but to make requests to the api we have to remove the dashes.\n\n### Start Date\n\nProviding a start date allows you to set how much historical data you wish to import into you workspace.\n\nIf you do not provide a start date the tap will set a date of 90 days ago.\n\nThis date has to be in the ISO-8601 date format, see the example below.\n\nFormat: `YYYY-MM-DDTHH:MM:SSZ`\n\nExample: `2020-10-01T13:12:11Z`\n\n### End Date\n\nProviding a end date allows you to set how much historical data you wish to import into you workspace.\n\nIf you do not provide a end date the tap will sync all data up to the current date.\n\nThis date has to be in the ISO-8601 date format, see the example below.\n\nFormat: `YYYY-MM-DDTHH:MM:SSZ`\n\nExample: `2020-10-01T13:12:11Z`\n\n## Learn more\n\n[Matatika Google Ads Data Source Documentation](https://www.matatika.com/docs/data-sources/tap-googleads)\n\n[Meltano Hub Google Ads Documentation](https://hub.meltano.com/taps/googleads)",
+  "logo_url": "https://app.matatika.com/assets/images/datasource/tap-googleads.svg",
+  "capabilities": [
+    "discover",
+    "catalog",
+    "state"
+  ],
+  "settings": [
+    {
+      "name": "oauth_credentials.authorization_url",
+      "kind": "hidden",
+      "value": "https://oauth2.googleapis.com/token",
+      "label": "OAuth identity provider authorization endpoint used create and refresh tokens",
+      "protected": false,
+      "required": "true"
+    },
+    {
+      "name": "oauth_credentials.scope",
+      "kind": "hidden",
+      "value": "https://www.googleapis.com/auth/adwords",
+      "label": "OAuth scopes we need to request access to",
+      "protected": false,
+      "required": "true"
+    },
+    {
+      "name": "oauth_credentials.access_token",
+      "kind": "hidden",
+      "label": "Access Token",
+      "protected": false,
+      "required": "true"
+    },
+    {
+      "name": "oauth_credentials.refresh_token",
+      "kind": "hidden",
+      "label": "OAuth Refresh Token",
+      "protected": false,
+      "required": "true"
+    },
+    {
+      "name": "oauth_credentials.refresh_proxy_url",
+      "kind": "hidden",
+      "label": "Optional - will be called with 'oauth_credentials.refresh_token' to refresh the access token",
+      "protected": false
+    },
+    {
+      "name": "oauth_credentials.refresh_proxy_url_auth",
+      "kind": "hidden",
+      "label": "Optional - Sets Authorization header on 'oauth_credentials.refresh_url' request",
+      "protected": false
+    },
+    {
+      "name": "oauth_credentials.client_id",
+      "kind": "hidden",
+      "label": "Optional - OAuth Client ID used if refresh_proxy_url not supplied",
+      "protected": false
+    },
+    {
+      "name": "oauth_credentials.client_secret",
+      "kind": "hidden",
+      "label": "Optional - OAuth Client Secret used if refresh_proxy_url not supplied",
+      "protected": false
+    },
+    {
+      "name": "start_date",
+      "kind": "date_iso8601",
+      "label": "Start Date",
+      "protected": false
+    },
+    {
+      "name": "end_date",
+      "kind": "date_iso8601",
+      "label": "End Date",
+      "protected": false
+    },
+    {
+      "name": "developer_token",
+      "kind": "hidden",
+      "value": "DYSuW0qdfU5-jti8Zdh1HQ",
+      "label": "Developer Token",
+      "protected": false,
+      "required": "true"
+    },
+    {
+      "name": "customer_id",
+      "kind": "string",
+      "label": "Customer Id",
+      "protected": false,
+      "required": "true"
+    }
+  ]
+}
