@@ -4,7 +4,7 @@ domains: '@matatika.com'
 default_environment: dev
 app_properties:
   WELCOME_DATASET_ALIAS: welcome
-default_data_store: Default
+default_data_store: New Default
 dataset_paths:
 - analyze/datasets
 - .meltano/analyze/datasets
