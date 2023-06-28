@@ -10,5 +10,5 @@ script: |-
   meltano run tap-github-meltanolabs target-postgres--transferwise dbt:deps dbt:snapshot dbt:run
 data_components:
 - tap-github-meltanolabs
-- Default
+- New Default
 - dbt

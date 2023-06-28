@@ -4,5 +4,5 @@ schedule: 0 0 */12 * * *
 timeout: 0
 data_components:
 - tap-auth0
-- Default
+- New Default
 - dbt
