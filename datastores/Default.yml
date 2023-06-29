@@ -1,3 +1,0 @@
-version: datastores/v0.1
-name: Default
-data_plugin: loaders/target-postgres--transferwise--transferwise
