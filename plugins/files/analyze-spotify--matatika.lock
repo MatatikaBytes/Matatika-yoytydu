@@ -1,0 +1,13 @@
+{
+  "plugin_type": "files",
+  "name": "analyze-spotify",
+  "namespace": "tap_spotify",
+  "variant": "matatika",
+  "label": "Spotify Insights",
+  "repo": "https://github.com/Matatika/analyze-spotify",
+  "pip_url": "git+https://github.com/Matatika/analyze-spotify@v0.4.1",
+  "description": "Instant insights on artists, genres, and tracks from Spotify.",
+  "update": {
+    "*.yml": "true"
+  }
+}
