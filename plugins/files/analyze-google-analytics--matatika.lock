@@ -6,7 +6,6 @@
   "label": "analyze-google-analytics",
   "repo": "https://github.com/Matatika/analyze-google-analytics",
   "pip_url": "git+https://github.com/Matatika/analyze-google-analytics@v0.4.0",
-  "matatika_hidden": false,
   "update": {
     "*.yml": "true"
   }
