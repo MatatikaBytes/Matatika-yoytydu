@@ -70,4 +70,4 @@ plugins:
     pip_url: git+https://github.com/Matatika/analyze-auth0@v0.5.0
   - name: analyze-google-analytics
     variant: matatika
-    pip_url: git+https://github.com/Matatika/analyze-google-analytics@v0.4.0
+    pip_url: git+https://github.com/Matatika/analyze-google-analytics@v0.4.1
