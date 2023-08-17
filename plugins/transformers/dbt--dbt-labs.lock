@@ -6,7 +6,7 @@
   "label": "dbt",
   "docs": "https://meltano.com/docs/transforms.html",
   "repo": "https://github.com/dbt-labs/dbt-core",
-  "pip_url": "dbt-core~=1.3.0 dbt-postgres~=1.3.0 dbt-snowflake~=1.3.0\n",
+  "pip_url": "dbt-core~=1.0.0 dbt-postgres~=1.0.0 dbt-redshift~=1.0.0 dbt-snowflake~=1.0.0 dbt-bigquery~=1.0.0\n",
   "logo_url": "https://app.matatika.com/assets/images/transformer/dbt.png",
   "settings": [
     {
