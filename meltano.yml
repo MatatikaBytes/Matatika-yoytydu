@@ -70,3 +70,13 @@ plugins:
   - name: analyze-google-analytics
     variant: matatika
     pip_url: git+https://github.com/Matatika/analyze-google-analytics@v0.4.1
+  - name: analyze-dbt-models
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/analyze-dbt-models
+  utilities:
+  - name: matatika
+    variant: matatika
+    pip_url: matatika==1.15.1
+  - name: dbt-artifacts
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/dbt-artifacts-ext.git
