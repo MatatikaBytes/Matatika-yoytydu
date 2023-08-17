@@ -58,7 +58,7 @@ plugins:
     pip_url: https://github.com/Matatika/dbt-tap-github@v0.2.0
   transformers:
   - name: dbt
-    variant: dbt-labs
+    variant: dbt
     pip_url: "dbt-core~=1.0.0 dbt-postgres~=1.0.0 dbt-redshift~=1.0.0 dbt-snowflake~=1.0.0\
       \ dbt-bigquery~=1.0.0\n"
   files:
