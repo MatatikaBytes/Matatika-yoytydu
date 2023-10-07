@@ -5,7 +5,7 @@
   "variant": "meltano",
   "label": "Auth0",
   "repo": "https://github.com/Matatika/tap-auth0",
-  "pip_url": "git+https://github.com/Matatika/tap-auth0@v0.4.0",
+  "pip_url": "git+https://github.com/Matatika/tap-auth0",
   "description": "Auth0 is an identity and access management service, that allows you to manage the access of your users.\n\n## Prerequisites\n\nTo find out how to get the required credentials for this data source please go to our documentation: [Auth0 Prerequisites](https://www.matatika.com/docs/data-sources/tap-auth0/prerequisites)\n\n## Data source settings\n\n### Client ID\n\nYour Auth0 Machine-to-Machine application client id.\n\n### Client Secret\n\nYour Auth0 Machine-to-Machine application client secret.\n\n### Domain\n\nYour Auth0 tenant domain in the format `<TENANT_NAME>.<REGION_IDENTIFIER>.auth0.com``\n\n## Learn more\n\n[Matatika Auth0 Data Source Documentation](https://www.matatika.com/docs/data-sources/tap-auth0)\n\n[Meltano Hub Auth0 Documentation](https://hub.meltano.com/taps/auth0)",
   "logo_url": "https://app.matatika.com/assets/images/datasource/tap-auth0.png",
   "capabilities": [
