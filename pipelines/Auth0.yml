@@ -1,7 +1,7 @@
 version: pipelines/v0.1
 name: Auth0
 schedule: 0 0 */12 * * *
-timeout: 0
+timeout: 7200
 data_components:
 - tap-auth0
 - New Default
