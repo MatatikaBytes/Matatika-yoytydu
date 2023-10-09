@@ -11,7 +11,7 @@ plugins:
     pip_url: git+https://github.com/Matatika/tap-google-analytics@v0.3.0
   - name: tap-auth0
     variant: meltano
-    pip_url: git+https://github.com/Matatika/tap-auth0
+    pip_url: git+https://github.com/Matatika/tap-auth0@v0.5.0
     config:
       job_poll_max_count: 20
       job_poll_interval_ms: 5000
