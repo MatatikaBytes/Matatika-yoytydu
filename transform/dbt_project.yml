@@ -26,6 +26,12 @@ models:
   my_meltano_project:
   tap_google_analytics: {}
   tap_github: {}
+  ## see docs: https://docs.elementary-data.com/
+  elementary:
+    ## elementary models will be created in the schema '<your_schema>_elementary'
+    +schema: "elementary"
+    ## To disable elementary for dev, uncomment this:
+    # enabled: "{{ target.name in ['prod','analytics'] }}"  
 vars:
   tap_google_analytics:
     schema: "{{ env_var('DBT_SOURCE_SCHEMA') }}"

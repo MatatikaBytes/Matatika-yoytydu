@@ -1,3 +1,7 @@
 /venv
 /.meltano
 .env
+transform/profile/edr.log
+transform/profile/edr_target/
+transform/dbt_packages
+output

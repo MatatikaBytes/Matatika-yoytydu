@@ -2,3 +2,6 @@ packages:
 - git: https://github.com/Matatika/dbt-tap-google-analytics
   revision: v0.3.0
 - git: https://github.com/Matatika/dbt-tap-github
+- package: elementary-data/elementary
+  version: 0.12.1
+  ## Docs: https://docs.elementary-data.com

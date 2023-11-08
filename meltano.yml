@@ -59,8 +59,7 @@ plugins:
   transformers:
   - name: dbt
     variant: dbt
-    pip_url: "dbt-core~=1.0.0 dbt-postgres~=1.0.0 dbt-redshift~=1.0.0 dbt-snowflake~=1.0.0\
-      \ dbt-bigquery~=1.0.0\n"
+    pip_url: "dbt-core~=1.7 dbt-postgres~=1.7"
   files:
   - name: analyze-github
     variant: matatika
@@ -81,3 +80,10 @@ plugins:
   - name: dbt-artifacts
     variant: matatika
     pip_url: git+https://github.com/Matatika/dbt-artifacts-ext.git
+  - name: elementary
+    variant: elementary
+    pip_url: elementary-data[postgres]==0.12.0 git+https://github.com/potloc/elementary-ext.git
+    config:
+      profiles-dir: ${MELTANO_PROJECT_ROOT}/transform/profile/
+      project_dir: ${MELTANO_PROJECT_ROOT}/transform/
+      file-path: ${MELTANO_PROJECT_ROOT}/output/elementary.html

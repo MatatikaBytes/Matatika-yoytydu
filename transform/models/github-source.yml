@@ -1,0 +1,34 @@
+version: 2
+
+sources:
+  - name: github_source
+    schema: "{{ env_var('DBT_SOURCE_SCHEMA') }}"
+    description: Source tables of from tap-github
+    tables:
+      - name: commits
+        ## sources don't have config, so elementary config is placed under 'meta'
+        meta:
+          elementary:
+            timestamp_column: "commit_timestamp"
+        tests:
+          - elementary.freshness_anomalies
+          - elementary.dimension_anomalies:
+              dimensions:
+                - repo
+          - elementary.all_columns_anomalies:
+              column_anomalies:
+                - null_count
+                - missing_count
+                - zero_count
+          ## - elementary.schema_changes_from_baseline
+        columns:
+          - name: author__login
+            data_type: text
+            tests:
+              - elementary.column_anomalies
+          - name: sha
+            data_type: text
+          - name: repo
+            data_type: text
+          - name: repo_id
+            data_type: integer
