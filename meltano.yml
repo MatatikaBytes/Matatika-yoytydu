@@ -36,9 +36,6 @@ plugins:
     - repositories.*
     - pull_requests.*
     - commits.*
-  - name: tap-googleads
-    variant: matatika
-    pip_url: git+https://github.com/Matatika/tap-googleads@v0.3.3
   loaders:
   - name: target-postgres
     variant: transferwise
@@ -51,7 +48,7 @@ plugins:
     pip_url: git+https://github.com/Matatika/target-snowflake@v0.1.1
   transforms:
   - name: dbt-google-analytics
-    variant: meltano
+    variant: matatika
     pip_url: https://github.com/Matatika/dbt-tap-google-analytics@v0.3.0
   - name: dbt-github
     variant: matatika
