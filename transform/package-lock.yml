@@ -1,10 +1,10 @@
 packages:
 - git: https://github.com/Matatika/dbt-tap-google-analytics
-  revision: v0.3.0
+  revision: 1ea11350fcb9b4cf8e4913665f9b8c8359d13dfb
 - git: https://github.com/Matatika/dbt-tap-github
-  revision: HEAD
+  revision: 8a36bf711f9f17937fc58fa2e2bc57a8f6128eaa
 - package: elementary-data/elementary
   version: 0.12.1
 - package: dbt-labs/dbt_utils
   version: 0.8.0
-sha1_hash: 55211a7bab1aea66d38076738d601bf2afc60919
+sha1_hash: 975028c7b19e8e0ae5102e442038eea41549e5f9

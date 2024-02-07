@@ -6,7 +6,7 @@
   "label": "PostgreSQL",
   "docs": "https://hub.meltano.com/loaders/postgres.html",
   "repo": "https://github.com/transferwise/pipelinewise-target-postgres",
-  "pip_url": "git+https://github.com/Matatika/pipelinewise-target-postgres@v0.1.0",
+  "pip_url": "git+https://github.com/Matatika/pipelinewise-target-postgres@v0.2.0",
   "executable": "target-postgres",
   "settings": [
     {
