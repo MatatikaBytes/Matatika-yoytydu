@@ -1,0 +1,34 @@
+{
+  "plugin_type": "extractors",
+  "name": "tap-hubspot",
+  "namespace": "tap_hubspot",
+  "variant": "spacecowboy",
+  "label": "Hubspot",
+  "docs": "https://www.matatika.com/data-details/tap-hubspot/",
+  "repo": "https://github.com/spacecowboy/tap-hubspot",
+  "pip_url": "git+https://github.com/spacecowboy/tap-hubspot.git",
+  "description": "Hubspot is a software company that provides a suite of tools for inbound marketing, sales, and customer service.\n\nHubspot's software is designed to help businesses attract, engage, and delight customers by providing a range of tools for inbound marketing, sales, and customer service. The company's marketing tools include a content management system, social media management, email marketing, and search engine optimization. Its sales tools include a CRM system, sales automation, and lead management. Finally, its customer service tools include a help desk, ticketing system, and customer feedback management. Hubspot's software is designed to be user-friendly and accessible to businesses of all sizes, with pricing plans that range from free to enterprise-level.\n### Prerequisites\nTo obtain the HubSpot API Key, you need to log in to your HubSpot account and navigate to the Integrations section. From there, you can create a new API key or use an existing one. To obtain the Start Date, you need to determine the date from which you want to start syncing data from HubSpot to your other system. This will depend on your specific use case and requirements.",
+  "logo_url": "https://app.matatika.com/assets/logos/extractors/hubspot.png",
+  "capabilities": [
+    "properties",
+    "state",
+    "catalog",
+    "discover"
+  ],
+  "settings": [
+    {
+      "name": "hapikey",
+      "kind": "password",
+      "label": "HubSpot API Key",
+      "description": "A unique identifier used to authenticate and authorize API requests to HubSpot.",
+      "protected": false
+    },
+    {
+      "name": "start_date",
+      "kind": "date_iso8601",
+      "label": "Start Date",
+      "description": "The date from which to start syncing data from HubSpot to the connected system.",
+      "protected": false
+    }
+  ]
+}

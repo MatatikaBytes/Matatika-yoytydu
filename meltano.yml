@@ -36,6 +36,9 @@ plugins:
     - repositories.*
     - pull_requests.*
     - commits.*
+  - name: tap-hubspot
+    variant: spacecowboy
+    pip_url: git+https://github.com/spacecowboy/tap-hubspot.git
   loaders:
   - name: target-postgres--transferwise
     variant: transferwise
@@ -50,7 +53,7 @@ plugins:
   transformers:
   - name: dbt
     variant: dbt
-    pip_url: "dbt-core~=1.7 dbt-postgres~=1.7"
+    pip_url: dbt-core~=1.7 dbt-postgres~=1.7
   files:
   - name: analyze-github
     variant: matatika
