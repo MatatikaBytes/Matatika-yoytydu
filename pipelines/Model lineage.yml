@@ -8,14 +8,8 @@ data_components:
 - dbt
 - utilities/dbt-artifacts--matatika
 - utilities/matatika--matatika
-script: |-
-  meltano install transformer dbt
-  meltano install utilities dbt-artifacts matatika
-
-  meltano invoke dbt deps
-  meltano invoke dbt docs generate
-  meltano invoke dbt-artifacts convert --format matatika
-
-  for dataset in output/*.yml; do
-    meltano invoke matatika publish $dataset
-  done
+actions:
+- dbt:deps
+- dbt:docs-generate
+- dbt-artifacts:convert-matatika
+- matatika:publish

@@ -1,7 +1,8 @@
 version: pipelines/v0.1
 name: GitHub
 schedule: 0 0 5 * * *
-timeout: 0
+timeout: 900
+max_retries: 0
 script: |-
   meltano install extractor tap-github-meltanolabs
   meltano install loader target-postgres--transferwise
