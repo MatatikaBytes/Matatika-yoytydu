@@ -1,7 +1,7 @@
 version: pipelines/v0.1
 name: GitHub
 schedule: 0 0 5 * * *
-timeout: 900
+timeout: 3600
 max_retries: 0
 script: |-
   meltano install extractor tap-github-meltanolabs

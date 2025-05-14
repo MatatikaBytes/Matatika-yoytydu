@@ -1,0 +1,15 @@
+# This file is managed by the 'analyze-dbt-models' file bundle and updated automatically when `meltano upgrade` is run.
+# To prevent any manual changes from being overwritten, remove the file bundle from `meltano.yml` or disable automatic updates:
+#     meltano config --plugin-type=files analyze-dbt-models set _update pipelines/Model Lineage.yml false
+
+version: pipelines/v0.1
+name: Model Lineage
+data_components:
+- dbt
+- utilities/dbt-artifacts--matatika
+- utilities/matatika--matatika
+actions:
+- dbt:deps
+- dbt:docs-generate
+- dbt-artifacts:convert-matatika
+- matatika:publish
