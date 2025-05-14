@@ -29,6 +29,13 @@
       "label": "Start Date",
       "description": "The date from which to start syncing data from HubSpot to the connected system.",
       "protected": false
+    },
+    {
+      "name": "no_search",
+      "kind": "boolean",
+      "label": "No Search",
+      "description": "Disables incremental",
+      "protected": false
     }
   ]
 }
