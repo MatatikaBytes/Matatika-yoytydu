@@ -6,9 +6,6 @@ environments:
 - name: dev
 plugins:
   extractors:
-  - name: tap-google-analytics
-    variant: meltano
-    pip_url: git+https://github.com/Matatika/tap-google-analytics@v0.3.0
   - name: tap-auth0
     variant: meltano
     pip_url: git+https://github.com/Matatika/tap-auth0@v0.5.0
@@ -49,9 +46,6 @@ plugins:
     variant: matatika
     pip_url: git+https://github.com/Matatika/pipelinewise-target-postgres@v0.2.0
   transforms:
-  - name: dbt-google-analytics
-    variant: matatika
-    pip_url: https://github.com/Matatika/dbt-tap-google-analytics@v0.3.0
   - name: dbt-github
     variant: matatika
     pip_url: https://github.com/Matatika/dbt-tap-github@v0.2.0
@@ -66,9 +60,6 @@ plugins:
   - name: analyze-auth0
     variant: matatika
     pip_url: git+https://github.com/Matatika/analyze-auth0@v0.5.0
-  - name: analyze-google-analytics
-    variant: matatika
-    pip_url: git+https://github.com/Matatika/analyze-google-analytics@v0.4.1
   - name: analyze-dbt-models
     variant: matatika
     pip_url: git+https://github.com/Matatika/analyze-dbt-models
