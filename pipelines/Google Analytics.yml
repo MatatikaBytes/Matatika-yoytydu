@@ -1,9 +1,0 @@
-version: pipelines/v0.1
-name: Google Analytics
-schedule: 0 0 0 * * *
-timeout: 0
-max_retries: 0
-data_components:
-- tap-google-analytics
-- New Default
-- dbt
