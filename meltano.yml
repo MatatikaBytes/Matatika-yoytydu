@@ -39,6 +39,8 @@ plugins:
   - name: tap-hubspot
     variant: spacecowboy
     pip_url: git+https://github.com/spacecowboy/tap-hubspot.git
+    config:
+      no_search: true
   loaders:
   - name: target-postgres--transferwise
     variant: transferwise
