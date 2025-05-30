@@ -38,6 +38,9 @@ plugins:
     pip_url: git+https://github.com/spacecowboy/tap-hubspot.git
     config:
       no_search: true
+  - name: tap-google-sheets
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/tap-google-sheets@v0.4.0
   loaders:
   - name: target-postgres--transferwise
     variant: transferwise
