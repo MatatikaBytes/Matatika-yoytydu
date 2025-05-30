@@ -1,0 +1,8 @@
+version: pipelines/v0.1
+name: Google Sheets
+timeout: 0
+max_retries: 0
+data_components:
+- tap-google-sheets
+- New Default
+- dbt
