@@ -12,9 +12,6 @@ plugins:
     config:
       job_poll_max_count: 20
       job_poll_interval_ms: 5000
-  - name: tap-shopify
-    variant: matatika
-    pip_url: git+https://github.com/Matatika/tap-shopify
   - name: tap-github
     variant: matatika
     pip_url: git+https://github.com/MeltanoLabs/tap-github.git
