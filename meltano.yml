@@ -38,6 +38,9 @@ plugins:
   - name: tap-google-sheets
     variant: matatika
     pip_url: git+https://github.com/Matatika/tap-google-sheets@v0.4.0
+  - name: tap-googleads
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/tap-googleads@v0.3.3
   loaders:
   - name: target-postgres--transferwise
     variant: transferwise
@@ -52,6 +55,9 @@ plugins:
   - name: dbt-google-analytics
     variant: matatika
     pip_url: https://github.com/Matatika/dbt-tap-google-analytics@v0.4.0
+  - name: dbt-googleads
+    variant: matatika
+    pip_url: https://github.com/Matatika/dbt-tap-googleads@v0.5.0
   transformers:
   - name: dbt
     variant: dbt
@@ -63,6 +69,9 @@ plugins:
   - name: analyze-auth0
     variant: matatika
     pip_url: git+https://github.com/Matatika/analyze-auth0@v0.5.0
+  - name: analyze-googleads
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/analyze-googleads@v0.5.0
   utilities:
   - name: matatika
     variant: matatika
