@@ -32,8 +32,11 @@ models:
     +schema: elementary
     ## To disable elementary for dev, uncomment this:
     # enabled: "{{ target.name in ['prod','analytics'] }}"  
+  tap_googleads: {}
 vars:
   tap_google_analytics:
     schema: "{{ env_var('DBT_SOURCE_SCHEMA') }}"
   tap_github:
+    schema: "{{ env_var('DBT_SOURCE_SCHEMA') }}"
+  tap_googleads:
     schema: "{{ env_var('DBT_SOURCE_SCHEMA') }}"
