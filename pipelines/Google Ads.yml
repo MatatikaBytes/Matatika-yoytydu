@@ -1,7 +1,8 @@
 version: pipelines/v0.1
-name: Google Sheets
+name: Google Ads
 timeout: 0
 max_retries: 0
 data_components:
-- tap-google-sheets
+- tap-googleads
 - New Default
+- dbt
