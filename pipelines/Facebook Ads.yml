@@ -1,0 +1,7 @@
+version: pipelines/v0.1
+name: Facebook Ads
+timeout: 3600
+max_retries: 0
+data_components:
+- tap-facebook
+- New Default
