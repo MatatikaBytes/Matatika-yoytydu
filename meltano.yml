@@ -41,6 +41,9 @@ plugins:
   - name: tap-googleads
     variant: matatika
     pip_url: git+https://github.com/Matatika/tap-googleads@v0.3.3
+  - name: tap-facebook
+    variant: singer-io
+    pip_url: git+https://github.com/singer-io/tap-facebook.git
   loaders:
   - name: target-postgres--transferwise
     variant: transferwise
