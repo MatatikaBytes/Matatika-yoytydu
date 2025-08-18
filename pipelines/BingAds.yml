@@ -1,0 +1,7 @@
+version: pipelines/v0.1
+name: BingAds
+timeout: 0
+max_retries: 0
+data_components:
+- tap-bing-ads
+- New Default
