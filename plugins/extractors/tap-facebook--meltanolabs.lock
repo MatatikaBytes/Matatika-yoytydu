@@ -53,11 +53,20 @@
       "sensitive": false,
       "protected": false
     },
-     {
+    {
       "name": "api_version",
       "kind": "string",
       "label": "API Version",
       "description": "The version of API to use.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "insight_reports_list",
+      "kind": "array",
+      "label": "Custom Insight reports",
+      "description": "List of custom insight reports.",
       "hidden": false,
       "sensitive": false,
       "protected": false
