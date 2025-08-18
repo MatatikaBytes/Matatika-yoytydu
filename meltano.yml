@@ -47,6 +47,9 @@ plugins:
   - name: tap-google-analytics
     variant: matatika
     pip_url: git+https://github.com/Matatika/tap-google-analytics@v0.3.0
+  - name: tap-bing-ads
+    variant: matatika
+    pip_url: tap-bing-ads
   loaders:
   - name: target-postgres--transferwise
     variant: transferwise
@@ -87,7 +90,8 @@ plugins:
     pip_url: git+https://github.com/Matatika/dbt-artifacts-ext.git
   - name: elementary
     variant: elementary
-    pip_url: elementary-data[postgres]==0.12.0 git+https://github.com/potloc/elementary-ext.git
+    pip_url: elementary-data[postgres]==0.12.0 
+      git+https://github.com/potloc/elementary-ext.git
     config:
       profiles-dir: ${MELTANO_PROJECT_ROOT}/transform/profile/
       project_dir: ${MELTANO_PROJECT_ROOT}/transform/
