@@ -27,32 +27,6 @@ domains:
 - matatika.com
 - matatika.com
 - matatika.com
-- matatika.com
-- matatika.com
-- matatika.com
-- matatika.com
-- matatika.com
-- matatika.com
-- matatika.com
-- matatika.com
-- matatika.com
-- matatika.com
-- matatika.com
-- matatika.com
-- matatika.com
-- matatika.com
-- matatika.com
-- matatika.com
-- matatika.com
-- matatika.com
-- matatika.com
-- matatika.com
-- matatika.com
-- matatika.com
-- matatika.com
-- matatika.com
-- matatika.com
-- matatika.com
 app_properties:
   WELCOME_DATASET_ALIAS: welcome
 default_data_store: New Default
