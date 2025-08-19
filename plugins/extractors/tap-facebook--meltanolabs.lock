@@ -10,11 +10,43 @@
   "description": "Facebook Ads is a platform for creating and running advertisements on Facebook and its affiliated platforms.\n\nFacebook Ads allows businesses and individuals to create and run targeted advertisements on Facebook, Instagram, Messenger, and other affiliated platforms. Advertisers can choose from a variety of ad formats, including image, video, carousel, and slideshow ads, and can target their ads based on factors such as demographics, interests, behaviors, and location. Facebook Ads also provides tools for tracking ad performance and optimizing campaigns for better results. With over 2 billion active users on Facebook alone, Facebook Ads offers a powerful way for businesses to reach and engage with their target audience.\n### Prerequisites\nTo obtain the Account ID for connecting to Facebook Ads, you can follow these steps:\n\n1. Log in to your Facebook Ads account.\n2. Click on the gear icon in the top right corner and select \"Account Settings\".\n3. Your Account ID will be listed at the top of the page.\n\nTo obtain the Access Token for connecting to Facebook Ads, you can follow these steps:\n\n1. Log in to your Facebook Developer account.\n2. Create a new app or select an existing one.\n3. Go to the \"Tools\" section and select \"Access Token Tool\".\n4. Generate a new Access Token with the necessary permissions.\n\nTo obtain the Start Date for connecting to Facebook Ads, you will need to determine the date from which you want to start retrieving data. This will depend on your specific use case and reporting needs.",
   "logo_url": "/assets/logos/extractors/facebook.png",
   "capabilities": [
-    "discover",
     "properties",
-    "state"
+    "state",
+    "discover"
   ],
   "settings": [
+    {
+      "name": "oauth_credentials.authorization_url",
+      "kind": "string",
+      "value": "https://www.facebook.com/v23.0/dialog/oauth",
+      "label": "OAuth identity provider authorization endpoint used create and refresh tokens",
+      "description": "The endpoint used to create and refresh OAuth tokens.",
+      "hidden": true,
+      "sensitive": false,
+      "required": "true",
+      "protected": false
+    },
+    {
+      "name": "oauth_credentials.scope",
+      "kind": "string",
+      "value": "public_profile ads_management ads_read",
+      "label": "Facebook OAuth scope is used to link to the configuration to use",
+      "description": "The specific configuration permissions for which we are requesting user consent.",
+      "hidden": true,
+      "sensitive": false,
+      "required": "true",
+      "protected": false
+    },
+    {
+      "name": "oauth_credentials.access_token",
+      "kind": "string",
+      "label": "Access Token",
+      "description": "The token used to authenticate and authorize API requests.",
+      "hidden": true,
+      "sensitive": true,
+      "required": "true",
+      "protected": false
+    },
     {
       "name": "account_id",
       "kind": "string",
@@ -23,16 +55,21 @@
       "placeholder": "Ex. 123456789012345",
       "hidden": false,
       "sensitive": false,
+      "required": "true",
       "protected": false
     },
     {
       "name": "access_token",
-      "kind": "oauth",
+      "aliases": [
+        "oauth_credentials.access_token"
+      ],
+      "kind": "string",
       "label": "Access Token",
       "description": "A token that grants access to the Facebook Ads API.",
       "placeholder": "Ex. *****************",
-      "hidden": false,
+      "hidden": true,
       "sensitive": true,
+      "required": "false",
       "protected": false
     },
     {
@@ -54,8 +91,18 @@
       "protected": false
     },
     {
+      "name": "include_deleted",
+      "kind": "string",
+      "label": "Include Deleted Objects",
+      "description": "A setting that determines whether or not to include deleted objects in the retrieved data.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
       "name": "api_version",
       "kind": "string",
+      "value": "v23.0",
       "label": "API Version",
       "description": "The version of API to use.",
       "hidden": false,
