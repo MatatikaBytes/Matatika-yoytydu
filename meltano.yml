@@ -50,9 +50,6 @@ plugins:
   - name: tap-bing-ads
     variant: matatika
     pip_url: tap-bing-ads
-  - name: tap-linkedin-ads
-    variant: singer-io
-    pip_url: tap-linkedin-ads
   loaders:
   - name: target-postgres--transferwise
     variant: transferwise
