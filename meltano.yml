@@ -44,9 +44,6 @@ plugins:
   - name: tap-facebook
     variant: meltanolabs
     pip_url: git+https://github.com/MeltanoLabs/tap-facebook.git
-  - name: tap-google-analytics
-    variant: matatika
-    pip_url: git+https://github.com/Matatika/tap-google-analytics@v0.3.0
   - name: tap-bing-ads
     variant: matatika
     pip_url: tap-bing-ads
