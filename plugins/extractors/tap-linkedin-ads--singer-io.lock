@@ -10,9 +10,9 @@
   "description": "LinkedIn Ads is a platform for advertising on LinkedIn that allows businesses to target specific audiences with their ads.\n\nLinkedIn Ads is a self-service advertising platform that enables businesses to create and display ads to a targeted audience on LinkedIn. The platform offers a variety of ad formats, including sponsored content, sponsored InMail, and display ads, and allows businesses to target their ads based on factors such as job title, company size, industry, and location. With LinkedIn Ads, businesses can increase their brand awareness, generate leads, and drive website traffic by reaching the right people at the right time. The platform also provides detailed analytics and reporting to help businesses measure the success of their campaigns and optimize their ad performance.\n### Prerequisites\nTo obtain the required settings for connecting to LinkedIn Ads, follow these steps:\n\n1. Accounts: You will need to have a LinkedIn Ads account to obtain the necessary account information. If you don't have an account, you can create one by visiting the LinkedIn Ads website and signing up.\n\n2. Access Token: To obtain an access token, you will need to create a LinkedIn App and authenticate it with your LinkedIn Ads account. You can do this by visiting the LinkedIn Developer website and following the instructions to create a new app. Once you have created the app, you can obtain an access token by following the authentication process.\n\n3. User Agent: The user agent is a string that identifies the browser or application making the request. You can set the user agent to any string you like, but it should be descriptive enough to identify your application. You can obtain the user agent string by checking the documentation for the programming language or library you are using to connect to the LinkedIn Ads API.",
   "logo_url": "/assets/logos/extractors/linkedin-ads.png",
   "capabilities": [
+    "discover",
     "catalog",
-    "state",
-    "discover"
+    "state"
   ],
   "settings": [
     {
@@ -45,6 +45,34 @@
       "hidden": true,
       "sensitive": true,
       "required": "true",
+      "protected": false
+    },
+    {
+      "name": "oauth_credentials.refresh_token",
+      "kind": "string",
+      "label": "OAuth Refresh Token",
+      "description": "The token used to refresh the access token when it expires.",
+      "hidden": true,
+      "sensitive": false,
+      "required": "false",
+      "protected": false
+    },
+    {
+      "name": "oauth_credentials.refresh_proxy_url",
+      "kind": "string",
+      "label": "Optional - will be called with 'oauth_credentials.refresh_token' to refresh the access token",
+      "description": "An optional function that will be called to refresh the access token using the refresh token.",
+      "hidden": true,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "oauth_credentials.refresh_proxy_url_auth",
+      "kind": "string",
+      "label": "Optional - Sets Authorization header on 'oauth_credentials.refresh_url' request",
+      "description": "An optional setting that sets the Authorization header on the request to refresh the access token.",
+      "hidden": true,
+      "sensitive": false,
       "protected": false
     },
     {
