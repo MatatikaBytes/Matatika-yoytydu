@@ -1,7 +1,0 @@
-version: pipelines/v0.1
-name: LinkedIn Ads
-timeout: 0
-max_retries: 0
-data_components:
-- tap-linkedin-ads
-- New Default
