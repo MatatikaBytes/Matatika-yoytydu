@@ -29,7 +29,7 @@
     {
       "name": "oauth_credentials.scope",
       "kind": "string",
-      "value": "1482645976107156",
+      "value": "1100853615489975",
       "label": "Facebook OAuth scope is used to link to the configuration to use",
       "description": "The specific configuration permissions for which we are requesting user consent.",
       "hidden": true,
