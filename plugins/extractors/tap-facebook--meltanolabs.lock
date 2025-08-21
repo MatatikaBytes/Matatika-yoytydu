@@ -83,16 +83,6 @@
       "protected": false
     },
     {
-      "name": "insights_buffer_days",
-      "kind": "integer",
-      "value": 0,
-      "label": "Insights Buffer Days",
-      "description": "The number of days to wait before retrieving insights data to ensure accuracy.",
-      "hidden": false,
-      "sensitive": false,
-      "protected": false
-    },
-    {
       "name": "start_date",
       "kind": "date_iso8601",
       "label": "Start Date",
