@@ -45,6 +45,7 @@ plugins:
     variant: meltanolabs
     pip_url: git+https://github.com/Matatika/tap-facebook.git
     config:
+      insights_buffer_days: 7
       start_date: '2025-07-01T14:17'
       account_ids: 
         - "607078722151438"
