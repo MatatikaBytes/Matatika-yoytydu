@@ -43,13 +43,53 @@ plugins:
     pip_url: git+https://github.com/Matatika/tap-googleads@v0.3.3
   - name: tap-facebook
     variant: meltanolabs
-    pip_url: git+https://github.com/Matatika/tap-facebook.git
+    pip_url: -e /home/mathewpabraham/taps/facebook-v2/tap-facebook
+    select:
+    - adsinsights_with_breakdowns.*
     config:
-      start_date: '2025-07-01T14:17'
+      start_date: 2025-07-01T14:17
       account_ids: 
-        - "607078722151438"
+      - "281343917432103"
+      - "786768618438612"
+      - "1780554298745150"
+      - "837683558061767"
+      - "1357264431103835"
+      - "1086307971843321"
+      - "551250736371722"
+      - "267989828244515"
+      - "432730114090217"
+      - "362594111923388"
+      - "5247064245358616"
+      - "579407192844407"
+      - "618434735356998"
+      - "290451282416040"
+      - "1312120795579468"
+      - "580722069355135"
+      - "2627957047431526"
+      - "629704547505493"
+      - "484878202369338"
+      - "233749152152623"
+      - "189648166192584"
+      - "841551169803603"
+      - "2019556988149340"
+      - "1491981357620412"
+      - "1056497368172200"
+      - "1784840128315311"
+      - "869691626714313"
+      - "842026586229923"
+      - "759318198247370"
+      - "448329312480643"
+      - "1260006758185321"
+      - "544376289903647"
+      - "377466599619126"
+      - "463208664976132"
+      - "7461102360673068"
+      - "771541410357884"
+      - "2183375275043325"
+      - "519135675349592"
+      - "589222421565011"
       insight_reports_list:
-        - name: "ad_insights"
+        - name: "with_breakdowns"
           level: "ad"
           breakdowns: ["publisher_platform","platform_position","impression_device"]
           action_breakdowns: ["action_type"]
@@ -59,6 +99,16 @@ plugins:
           action_report_time: "mixed"
           fields_to_select:  ["ad_id","date","account_id","adset_id","campaign_id","clicks","impressions","inline_link_clicks","reach","unique_clicks","unique_inline_link_clicks","full_view_impressions","full_view_reach","cost_per_inline_link_click","cost_per_inline_post_engagement","cost_per_unique_click","cost_per_unique_inline_link_click","cost_per_estimated_ad_recallers","social_spend","unique_link_clicks_ctr","estimated_ad_recall_rate","estimated_ad_recallers","unique_ctr","unique_inline_link_click_ctr","cpc","cpm","cpp","ctr","frequency","spend","account_name","ad_name","adset_name","buying_type","campaign_name","canvas_avg_view_percent","canvas_avg_view_time","gender_targeting","inline_link_click_ctr","inline_post_engagement","labels","location","objective","conversion_rate_ranking","engagement_rate_ranking","quality_ranking"]
           lookback_window: 28
+        - name: "without_breakdowns"
+          level: "ad"
+          breakdowns: []
+          action_breakdowns: ["action_type"]
+          time_increment_days: 1
+          action_attribution_windows_view: "1d_view"
+          action_attribution_windows_click: "7d_click"
+          action_report_time: "mixed"
+          fields_to_select: ["account_currency","account_id","account_name","action_values","actions","created_time","ctr","date_start","date_stop","updated_time","video_15_sec_watched_actions","video_30_sec_watched_actions","video_avg_time_watched_actions","video_continuous_2_sec_watched_actions","video_p100_watched_actions","video_p25_watched_actions","video_p50_watched_actions","video_p75_watched_actions","video_p95_watched_actions","video_thruplay_watched_actions","video_play_actions"]
+          lookback_window: 1
   - name: tap-bing-ads
     variant: matatika
     pip_url: tap-bing-ads
