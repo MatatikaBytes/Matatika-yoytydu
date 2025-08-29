@@ -47,17 +47,6 @@
       "protected": false
     },
     {
-      "name": "account_id",
-      "kind": "string",
-      "label": "Account ID",
-      "description": "The unique identifier for the Facebook Ads account being connected.",
-      "placeholder": "Ex. 123456789012345",
-      "hidden": false,
-      "sensitive": false,
-      "required": "false",
-      "protected": false
-    },
-    {
       "name": "account_ids",
       "kind": "array",
       "label": "Account IDs",
