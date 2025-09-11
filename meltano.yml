@@ -43,7 +43,7 @@ plugins:
     pip_url: git+https://github.com/Matatika/tap-googleads@v0.3.3
   - name: tap-facebook
     variant: meltanolabs
-    pip_url: -e /home/mathewpabraham/taps/facebook-v2/tap-facebook
+    pip_url: git+https://github.com/Matatika/tap-facebook.git
     select:
     - adsinsights_with_breakdowns.*
     config:
@@ -113,8 +113,8 @@ plugins:
     variant: matatika
     pip_url: tap-bing-ads
   - name: tap-linkedin-ads
-    variant: singer-io
-    pip_url: tap-linkedin-ads
+    variant: meltanolabs
+    pip_url: https://github.com/Matatika/tap-linkedin-ads.git
   loaders:
   - name: target-postgres--transferwise
     variant: transferwise
