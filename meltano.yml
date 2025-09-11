@@ -114,7 +114,7 @@ plugins:
     pip_url: tap-bing-ads
   - name: tap-linkedin-ads
     variant: meltanolabs
-    pip_url: https://github.com/Matatika/tap-linkedin-ads.git
+    pip_url: git+https://github.com/Matatika/tap-linkedin-ads.git
   loaders:
   - name: target-postgres--transferwise
     variant: transferwise
