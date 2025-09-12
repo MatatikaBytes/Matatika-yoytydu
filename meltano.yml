@@ -115,6 +115,15 @@ plugins:
   - name: tap-linkedin-ads
     variant: meltanolabs
     pip_url: git+https://github.com/Matatika/tap-linkedin-ads.git
+    select:
+    - accounts.*
+    - account_users.*
+    - campaigns.*
+    - campaign_groups.*
+    - creatives.*
+    - ad_analytics_by_campaign.*
+    - ad_analytics_by_creative.*
+    - video_ads.*
   loaders:
   - name: target-postgres--transferwise
     variant: transferwise

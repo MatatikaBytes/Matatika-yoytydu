@@ -76,26 +76,6 @@
       "protected": false
     },
     {
-      "name": "oauth_client_id",
-      "kind": "string",
-      "label": "OAuth Client ID",
-      "description": "The OAuth Client ID - only used if an oauth2 refresh proxy refresh URL is not supplied.",
-      "hidden": false,
-      "sensitive": false,
-      "required": "false",
-      "protected": false
-    },
-    {
-      "name": "oauth_client_secret",
-      "kind": "string",
-      "label": "OAuth Client Secret",
-      "description": "The OAuth Client Secret - only used if an oauth2 refresh proxy refresh URL is not supplied.",
-      "hidden": false,
-      "sensitive": true,
-      "required": "false",
-      "protected": false
-    },
-    {
       "name": "access_token",
       "aliases": [
         "oauth_credentials.access_token"
