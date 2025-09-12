@@ -109,9 +109,9 @@
       "protected": false
     },
     {
-      "name": "client_id",
+      "name": "oauth_credentials.client_id",
       "kind": "string",
-      "label": "OAuth Client ID",
+      "label": "Client ID",
       "description": "The OAuth Client ID - only used if an oauth2 refresh proxy refresh URL is not supplied.",
       "hidden": false,
       "sensitive": false,
@@ -119,9 +119,9 @@
       "protected": false
     },
     {
-      "name": "client_secret",
+      "name": "oauth_credentials.client_secret",
       "kind": "string",
-      "label": "OAuth Client Secret",
+      "label": "Client Secret",
       "description": "The OAuth Client Secret - only used if an oauth2 refresh proxy refresh URL is not supplied.",
       "hidden": false,
       "sensitive": true,
