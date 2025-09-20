@@ -1,0 +1,8 @@
+version: pipelines/v0.1
+name: Catalog
+timeout: 0
+max_retries: 0
+data_components:
+- tap-postgres
+- New Default
+- dbt
