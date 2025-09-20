@@ -1,0 +1,216 @@
+{
+  "plugin_type": "extractors",
+  "name": "tap-postgres",
+  "namespace": "tap_postgres",
+  "variant": "matatika",
+  "label": "PostgreSQL",
+  "docs": "https://www.matatika.com/data-details/tap-postgres/",
+  "repo": "https://github.com/Matatika/pipelinewise-tap-postgres",
+  "pip_url": "git+https://github.com/Matatika/pipelinewise-tap-postgres.git@v1.0.0",
+  "description": "PostgreSQL is an open-source relational database management system.\n\nPostgreSQL is a powerful and highly customizable database management system that is used to store and manage large amounts of data. It is known for its reliability, scalability, and robustness, making it a popular choice for businesses and organizations of all sizes. PostgreSQL supports a wide range of data types and provides advanced features such as transactions, triggers, and stored procedures. It also has a strong focus on data integrity and security, with support for encryption and authentication mechanisms. Additionally, PostgreSQL has a large and active community of developers who contribute to its ongoing development and improvement.\n### Prerequisites\nTo obtain the required settings for connecting to PostgreSQL, you can follow these steps:\n\n1. Host: The host is the server where the PostgreSQL database is running. You can obtain the host name or IP address from your system administrator or the hosting provider.\n\n2. Port: The default port for PostgreSQL is 5432. However, the port number may be different depending on the configuration. You can obtain the port number from your system administrator or the hosting provider.\n\n3. User: The user is the username that you use to connect to the PostgreSQL database. You can obtain the username from your system administrator or the hosting provider.\n\n4. Password: The password is the password that you use to connect to the PostgreSQL database. You can obtain the password from your system administrator or the hosting provider.\n\n5. Database Name: The database name is the name of the PostgreSQL database that you want to connect to. You can obtain the database name from your system administrator or the hosting provider.",
+  "logo_url": "/assets/logos/extractors/postgres.png",
+  "capabilities": [
+    "catalog",
+    "discover",
+    "state"
+  ],
+  "settings": [
+    {
+      "name": "host",
+      "kind": "string",
+      "label": "Host",
+      "description": "The hostname or IP address of the PostgreSQL server.",
+      "hidden": false,
+      "sensitive": false,
+      "required": "true",
+      "protected": false
+    },
+    {
+      "name": "port",
+      "kind": "integer",
+      "value": 5432,
+      "label": "Port",
+      "description": "The port number on which the PostgreSQL server is listening.",
+      "hidden": false,
+      "sensitive": false,
+      "required": "true",
+      "protected": false
+    },
+    {
+      "name": "user",
+      "kind": "string",
+      "label": "User",
+      "description": "The username to use when connecting to the PostgreSQL server.",
+      "hidden": false,
+      "sensitive": false,
+      "required": "true",
+      "protected": false
+    },
+    {
+      "name": "password",
+      "kind": "string",
+      "label": "Password",
+      "description": "The password to use when connecting to the PostgreSQL server.",
+      "hidden": false,
+      "sensitive": true,
+      "required": "true",
+      "protected": false
+    },
+    {
+      "name": "dbname",
+      "kind": "string",
+      "label": "Database Name",
+      "description": "The name of the PostgreSQL database to connect to.",
+      "hidden": false,
+      "sensitive": false,
+      "required": "true",
+      "protected": false
+    },
+    {
+      "name": "ssl",
+      "kind": "boolean",
+      "value": false,
+      "label": "SSL",
+      "description": "Whether or not to use SSL encryption when connecting to the PostgreSQL server.",
+      "hidden": false,
+      "sensitive": false,
+      "value_post_processor": "stringify",
+      "protected": false
+    },
+    {
+      "name": "filter_schemas",
+      "kind": "string",
+      "label": "Filter Schemas",
+      "description": "A comma-separated list of schemas to include or exclude when replicating data.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "default_replication_method",
+      "kind": "options",
+      "value": "FULL_TABLE",
+      "label": "Default Replication Method",
+      "description": "The default replication method to use when replicating data.",
+      "options": [
+        {
+          "label": "Log-based Incremental Replication",
+          "value": "LOG_BASED"
+        },
+        {
+          "label": "Key-based Incremental Replication",
+          "value": "INCREMENTAL"
+        },
+        {
+          "label": "Full Table Replication",
+          "value": "FULL_TABLE"
+        }
+      ],
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "max_run_seconds",
+      "kind": "integer",
+      "value": 43200,
+      "label": "Max Run Seconds",
+      "description": "The maximum number of seconds to run the replication task before stopping.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "logical_poll_total_seconds",
+      "kind": "integer",
+      "value": 60,
+      "label": "Logical Poll Total Seconds",
+      "description": "The total number of seconds to wait for new changes when using logical replication.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "break_at_end_lsn",
+      "kind": "boolean",
+      "value": true,
+      "label": "Break At End LSN",
+      "description": "Whether or not to stop replication when the end LSN is reached.",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "ssh_tunnel.host",
+      "kind": "string",
+      "label": "SSH Tunnel Host",
+      "description": "Address of the bastion host, this is the host we'll connect to via ssh",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "ssh_tunnel.port",
+      "kind": "integer",
+      "value": 22,
+      "label": "SSH Tunnel Port",
+      "description": "Port to connect to bastion host",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "ssh_tunnel.private_key",
+      "kind": "string",
+      "label": "SSH Tunnel Private Key",
+      "description": "A base64 encoded Private Key for authentication to the bastion host w/ key pair auth",
+      "hidden": false,
+      "sensitive": true,
+      "encoding": "base64",
+      "protected": false
+    },
+    {
+      "name": "ssh_tunnel.private_key_password",
+      "kind": "string",
+      "label": "SSH Tunnel Private Key Password",
+      "description": "Private Key Password, leave None if no password is set",
+      "hidden": false,
+      "sensitive": true,
+      "protected": false
+    },
+    {
+      "name": "ssh_tunnel.username",
+      "kind": "string",
+      "label": "SSH Tunnel Username",
+      "description": "Username to connect to bastion host",
+      "hidden": false,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "ssh_tunnel.password",
+      "kind": "string",
+      "label": "SSH Tunnel Password",
+      "description": "Password to connect to bastion host w/ basic auth",
+      "hidden": false,
+      "sensitive": true,
+      "protected": false
+    },
+    {
+      "name": "ssh_tunnel.host_setting_name",
+      "kind": "string",
+      "value": "host",
+      "hidden": true,
+      "sensitive": false,
+      "protected": false
+    },
+    {
+      "name": "ssh_tunnel.port_setting_name",
+      "kind": "string",
+      "value": "port",
+      "hidden": true,
+      "sensitive": false,
+      "protected": false
+    }
+  ]
+}
